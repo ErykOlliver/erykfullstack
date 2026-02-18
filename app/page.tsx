@@ -1,10 +1,16 @@
 import Image from "next/image";
-import { Heading } from "./components/text";
+import { Heading } from "./components/ui-kit/text";
+import Home from "./components/showcase/home/home";
+import NavBar from "./components/ui-kit/navbar";
+import { FaWhatsapp } from "react-icons/fa";
 
-export default function Home() {
+export default function App() {
   return (
-    <main className="bg-black w-screen h-screen items-center flex flex-col gap-2 justify-center">
-      <Heading level={1} className="text-white-pure  underline">Eryk Olliver</Heading>
-    </main>
+    <>
+      <button className="fixed bottom-8 animate-pulse shadow-md shadow-black/30 right-4 bg-success text-white p-3.5 rounded-full z-100"><FaWhatsapp className="size-8" /></button>
+      <NavBar />
+      <Home />
+      <Home />
+    </>
   );
 }

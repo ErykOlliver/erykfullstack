@@ -61,14 +61,5 @@ type paragraphProps = {
 }
 
 export function Paragraph({ font, className, children }: paragraphProps) {
-    return <p className={`text-p leading-p ${className} ${font ? fonts[font] : poppins.className}`} >{children}</p>
-}
-
-type bodyProps = {
-    children?: React.ReactNode
-    className?: string
-}
-
-export function Body(props: bodyProps) {
-    return <p className={`text-body leading-body ${poppins.className} ${props.className}`}>{props.children}</p>
+    return <p className={`text-xs ${className} ${font ? fonts[font] : poppins.className}`} >{children}</p>
 }
