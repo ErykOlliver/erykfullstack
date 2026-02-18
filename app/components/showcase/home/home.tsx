@@ -6,8 +6,8 @@ import { PiSealCheckFill } from 'react-icons/pi'
 
 export default function Home() {
     return (
-        <section id='hero' className='w-full flex flex-col gap-6 h-full px-5 pt-25 relative'>
-            <Image src={'/erykavatar.webp'} alt='Eryk Olliver Avatar' className='w-40 z-40 h-auto absolute right-2 bottom-10' width={1920} height={1080} />
+        <section id='home' className='w-full flex flex-col gap-6 h-fit px-5 pt-25 pb-35 relative'>
+            <Image src={'/erykavatar.webp'} alt='Eryk Olliver Avatar' className='w-40 avatar-flutuante z-100 h-auto absolute right-2 bottom-10' width={1920} height={1080} />
             <div className="absolute inset-0 -z-10">
                 <Image
                     src="/hero-banner.webp"
@@ -47,6 +47,7 @@ export default function Home() {
                     <Paragraph className='text-black-600 font-normal'>Clientes <span className='text-black-800 font-semibold'> atendidos</span> no brasil</Paragraph>
                 </div>
             </article>
+            <Image src={'/rectangle.png'} alt='Eryk Olliver Avatar' className='w-full h-auto absolute right-0 z-100 bottom-0' width={1920} height={1080} />
         </section>
     )
 }

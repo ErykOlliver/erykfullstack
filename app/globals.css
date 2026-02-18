@@ -83,4 +83,17 @@
     /* Base */
     --color-info-100: #DBEAFE;
     /* Background leve */
+
+}
+
+.avatar-flutuante {
+    animation: float 5s ease-in-out infinite;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
 }
