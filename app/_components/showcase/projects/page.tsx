@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Heading, Paragraph } from '../../ui-kit/text'
-import { selectedProject } from '@/app/enums/enums'
+import { selectedProject } from '@/app/utils/enums'
 import ProjectCard from './components/project-card'
 
 
