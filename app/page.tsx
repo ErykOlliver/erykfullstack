@@ -3,6 +3,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import NavBar from "./_components/ui-kit/navbar";
 import Home from "./_components/showcase/home/page";
 import Projects from "./_components/showcase/projects/page";
+import DigitalSolutions from "./_components/showcase/digital-solutions/page";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <NavBar />
       <Home />
       <Projects />
+      <DigitalSolutions />
     </>
   );
 }

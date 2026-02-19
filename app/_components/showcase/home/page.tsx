@@ -15,7 +15,7 @@ export default function Home() {
                     fill
                     className="object-cover object-center"
                     priority
-                    quality={100}
+                    quality={75}
                 />
             </div>
             <div className="absolute -z-5 inset-0 bg-white/50 md:bg-white/65 lg:bg-white/30" />

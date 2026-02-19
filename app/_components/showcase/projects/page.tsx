@@ -10,9 +10,9 @@ import ProjectCard from './components/project-card'
 export default function Projects() {
     const [selected, setSelected] = useState<selectedProject>(selectedProject.FrontEnd)
     return (
-        <section id='hero' className='w-full flex flex-col gap-6 h-fit py-6 relative bg-off-white'>
+        <section id='projects' className='w-full flex flex-col gap-6 h-fit py-6 relative bg-off-white'>
             <header className='w-full h-fit gap-6 flex flex-col px-5'>
-                <Heading level={1} className='text-black-800 uppercase font-semibold text-center'>Projetos que Geram Resultado.</Heading>
+                <Heading level={1} className='text-black-800 uppercase font-bold text-center'>Projetos que Geram Resultado.</Heading>
                 <Paragraph className='text-base text-center text-black-600'>Soluções digitais desenvolvidas com foco em performance, escalabilidade e impacto real no negócio.</Paragraph>
                 <div className='w-full h-fit flex items-center justify-center gap-2.5'>
                     <button onClick={() => setSelected(selectedProject.FrontEnd)} className={`${selected === selectedProject.FrontEnd ? 'opacity-100 shadow-sm shadow-primary-500' : 'opacity-50 shadow-none'} border uppercase border-white rounded-md px-1.5 text-xs py-1.5 bg-linear-to-r via-yellow-500 from-primary-500 font-medium to-primary-600 text-white`}>Projetos Front-End</button>
