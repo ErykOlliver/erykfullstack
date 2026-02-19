@@ -1,8 +1,8 @@
 import React from 'react'
-import { Heading, Paragraph } from '../../ui-kit/text'
 import Image from 'next/image'
 import { CheckCircle } from 'lucide-react'
 import { PiSealCheckFill } from 'react-icons/pi'
+import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
 
 export default function Home() {
     return (

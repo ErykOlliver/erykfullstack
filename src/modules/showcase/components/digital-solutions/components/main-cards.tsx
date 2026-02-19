@@ -1,11 +1,11 @@
 "use client"
 
-import { Heading, Paragraph } from "@/app/_components/ui-kit/text"
-import { SolutionCardProps } from "@/app/utils/types"
 import { motion } from "framer-motion"
 import { Check } from "lucide-react"
 import Image from "next/image"
 import { useInView } from "react-intersection-observer"
+import { SolutionCardProps } from "../type/types"
+import { Heading, Paragraph } from "@/src/shared/ui-kit/text"
 
 
 export default function SolutionCard(props: SolutionCardProps) {

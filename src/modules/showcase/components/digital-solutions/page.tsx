@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Heading, Paragraph } from '../../ui-kit/text'
 import SolutionCard from './components/main-cards'
 import Image from 'next/image'
 import { useInView } from 'react-intersection-observer'
 import { useState, useEffect } from 'react'
+import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
 
 const cards = [
     {

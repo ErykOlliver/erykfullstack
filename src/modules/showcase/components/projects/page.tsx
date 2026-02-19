@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Heading, Paragraph } from '../../ui-kit/text'
-import { selectedProject } from '@/app/utils/enums'
 import ProjectCard from './components/project-card'
+import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
+import { selectedProject } from '@/src/shared/utils/enums'
 
 
 

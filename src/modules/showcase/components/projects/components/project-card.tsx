@@ -1,4 +1,4 @@
-import { Heading, Paragraph } from '@/app/_components/ui-kit/text'
+import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
 import { Check } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
