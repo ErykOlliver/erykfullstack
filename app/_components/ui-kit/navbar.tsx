@@ -19,7 +19,7 @@ export default function NavBar() {
                 <>
                     <div onClick={() => setEnabledMenu(false)} className='bg-black/40 w-screen h-screen z-2000 fixed' />
 
-                    <article className=' p-5 w-fit h-full bg-off-white right-0 top-0 shadow-2xl border-l-2 border-white fixed z-2000'>
+                    <article className=' p-5 w-fit h-full bg-soft-white right-0 top-0 shadow-2xl border-l-2 border-white fixed z-2000'>
                         <header className='w-full'>
                             <X className='bg-black size-8 text-white rounded-full p-1' onClick={() => setEnabledMenu(false)} />
                         </header>
