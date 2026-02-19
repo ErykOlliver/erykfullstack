@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import NavBar from "./_components/ui-kit/navbar";
-import Home from "./_components/showcase/home/home";
-import Projects from "./_components/showcase/projects/projects";
+import Home from "./_components/showcase/home/page";
+import Projects from "./_components/showcase/projects/page";
 
 export default function App() {
   return (
