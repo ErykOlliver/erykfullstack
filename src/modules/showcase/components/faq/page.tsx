@@ -6,7 +6,34 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Quest from './components/quest'
 
 const faqs = [
-    {},
+    {
+        question: 'Quanto custa desenvolver um site ou sistema?',
+        response: 'O valor depende do escopo, complexidade e integrações necessárias. Após entender os objetivos do projeto e as funcionalidades desejadas, é definido um orçamento detalhado.'
+    },
+    {
+        question: 'Quanto tempo leva para ficar pronto?',
+        response: 'O prazo varia conforme o projeto. Landing pages levam em média de 1 a 3 semanas. Sistemas e plataformas mais complexas podem levar de 4 a 12 semanas, dependendo das funcionalidades.'
+    },
+    {
+        question: 'Você trabalha com templates prontos?',
+        response: 'Não trabalho com modelos genéricos. Cada projeto é estruturado de acordo com as necessidades específicas do cliente e do negócio.'
+    },
+    {
+        question: 'O projeto já vem otimizado para SEO e performance?',
+        response: 'Sim. A estrutura é desenvolvida seguindo boas práticas de performance, organização de código e SEO técnico, garantindo carregamento rápido e base adequada para posicionamento em motores de busca.'
+    },
+    {
+        question: 'Posso solicitar novas funcionalidades depois?',
+        response: 'Sim. Os sistemas são desenvolvidos de forma modular, permitindo a adição de novas funcionalidades sem necessidade de reconstruir o projeto.'
+    },
+    {
+        question: 'Você oferece suporte após a entrega?',
+        response: 'Sim. Após a entrega, são realizados ajustes necessários e é possível contratar manutenção contínua para evolução e melhorias do sistema.'
+    },
+    {
+        question: 'Você também desenvolve aplicativos?',
+        response: 'Sim. Desenvolvo aplicativos mobile, sistemas web, plataformas administrativas e outras soluções digitais conforme a necessidade do projeto.'
+    }
 ]
 
 export default function Faq() {
@@ -21,9 +48,11 @@ export default function Faq() {
                 <Heading level={1} className='text-black-800 uppercase font-bold text-center'>FAQ — Perguntas Frequentes</Heading>
             </header>
             <article className='flex gap-6 px-5 flex-col'>
-                {[0, 1, 2, 3].map((_, index) => (
+                {faqs.map((f, index) => (
                     <Quest
                         key={index}
+                        question={f.question}
+                        response={f.response}
                         isOpen={openIndex === index}
                         onToggle={() => handleToggle(index)}
                     />
