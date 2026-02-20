@@ -68,9 +68,9 @@ export default function Faq() {
                     Entre em contato.
                     Você explica sua necessidade e eu mostro o caminho mais viável para desenvolver.
                 </Paragraph>
-                <button className='bg-linear-to-b flex items-center justify-center gap-1 shadow-[0_0_2px] shadow-black/70 text-white font-medium px-12 py-3 border rounded-full from-yellow-500  to-primary-600'>
+                {/* <button className='bg-linear-to-b flex items-center justify-center gap-1 shadow-[0_0_2px] shadow-black/70 text-white font-medium px-12 py-3 border rounded-full from-yellow-500  to-primary-600'>
                     Vamos conversar
-                </button>
+                </button> */}
             </article>
         </section>
     )

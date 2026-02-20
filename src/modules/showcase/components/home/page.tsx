@@ -23,8 +23,8 @@ export default function Home() {
                 <Heading className='font-semibold text-black-800' level={1}>Sistemas e <span className='text-primary-500'>Apps</span> que transformam visitantes em clientes.</Heading>
                 <p className='font-normal text-black-600 text-base'>Desenvolvimento sob medida em <span className='text-black-800 font-semibold'>Web</span> e <span className='text-black-800 font-semibold'>Mobile </span>para empresas que querem escalar com <span className='text-black-800 font-semibold'> tecnologia de verdade </span>.</p>
                 <div className='flex w-full items-center gap-2'>
-                    <button className='bg-linear-to-b from-yellow-500  to-primary-600 py-3 rounded-full border shadow-[0_0_2px] shadow-black/70 border-white px-3 font-medium h-fit text-xs w-fit text-white'>Solicitar Orçamento</button>
-                    <button className='bg-soft-white py-3 rounded-full border border-white-pure px-5 font-medium shadow-[0_0_2px] shadow-black/70 text-black-800 text-xs'>Ver Projetos</button>
+                    <button className='bg-linear-to-b from-yellow-500  to-primary-600 py-3 rounded-lg border shadow-[0_0_2px] shadow-black/70 border-white px-3 font-medium h-fit text-xs w-fit text-white'>Solicitar Orçamento</button>
+                    <button className='bg-soft-white py-3 rounded-lg border border-white-pure px-5 font-medium shadow-[0_0_2px] shadow-black/70 text-black-800 text-xs'>Ver Projetos</button>
                 </div>
             </article>
             <article className='w-full h-fit border gap-2.5 items-center justify-center border-white rounded-md shadow-sm shadow-black/30 p-1 flex flex-col bg-white/10 backdrop-blur-xs'>

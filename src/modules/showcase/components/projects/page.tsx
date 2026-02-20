@@ -26,7 +26,7 @@ export default function Projects() {
                     <ProjectCard />
                     <ProjectCard />
                 </div>
-                <button className='bg-linear-to-b shadow-[0_0_2px] shadow-black/70 text-white font-medium px-12 py-3 border rounded-full from-yellow-500  to-primary-600'>Ver portólio completo</button>
+                <button className='bg-linear-to-b shadow-[0_0_2px] shadow-black/70 text-white font-medium px-12 py-3 border rounded-lg from-yellow-500  to-primary-600'>Ver portólio completo</button>
             </article>
 
         </section>
