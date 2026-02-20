@@ -16,3 +16,7 @@ export async function create(data: typeProjectProps) {
 export async function list() {
     return await prisma.project.findMany()
 }
+
+export async function eraser(id: string) {
+    return await prisma.project.delete({ where: { id } })
+}

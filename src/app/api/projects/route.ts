@@ -21,14 +21,14 @@ export async function GET() {
 
 export async function POST(req: Request) {
     const body: typeProjectProps = await req.json()
-    
+
     try {
         const project = await createProject(body)
 
         return NextResponse.json({
             status: 'success',
             data: project
-        }, {status: 201})
+        }, { status: 201 })
     } catch (error) {
         return NextResponse.json({
             status: 'error',
