@@ -21,6 +21,11 @@ enum ProjectCategory {
   API
 }
 
+enum Status {
+  EMANDAMENTO
+  FINALIZADO
+}
+
 model Skill {
   id       Int           @id @default(autoincrement())
   name     String        @unique
@@ -43,6 +48,7 @@ model Project {
   slug            String
   github          String?
   page            String?
+  status          Status          @default(EMANDAMENTO)
   designer        String
   designerPage    String
   applicationType String
