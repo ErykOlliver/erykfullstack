@@ -15,9 +15,9 @@ export default function Projects() {
                 <Heading level={1} className='text-black-800 uppercase font-bold text-center'>Projetos que Geram Resultado.</Heading>
                 <Paragraph className='text-base text-center text-black-600'>Soluções digitais desenvolvidas com foco em performance, escalabilidade e impacto real no negócio.</Paragraph>
                 <div className='w-full h-fit flex items-center justify-center gap-2.5'>
-                    <button onClick={() => setSelected(selectedProject.FrontEnd)} className={`${selected === selectedProject.FrontEnd ? 'opacity-100 shadow-sm shadow-primary-500' : 'opacity-50 shadow-none'} border uppercase border-white rounded-md px-1.5 text-xs py-1.5 bg-linear-to-r via-yellow-500 from-primary-500 font-medium to-primary-600 text-white`}>Projetos Front-End</button>
-                    <button onClick={() => setSelected(selectedProject.Mobile)} className={`${selected === selectedProject.Mobile ? 'opacity-100 shadow-sm shadow-primary-500' : 'opacity-50 shadow-none'} border border-white rounded-md px-2 text-xs py-3 bg-linear-to-r from-primary-500 via-yellow-500 font-medium to-primary-600 text-white uppercase`}>Projetos Mobile(APPS)</button>
-                    <button onClick={() => setSelected(selectedProject.BackEnd)} className={`${selected === selectedProject.BackEnd ? 'opacity-100 shadow-sm shadow-primary-500' : 'opacity-50 shadow-none'} border border-white rounded-md px-1.5 text-xs py-1.5 bg-linear-to-r from-primary-500 via-yellow-500 font-medium to-primary-600 text-white uppercase`}>Projetos Back-End</button>
+                    <button onClick={() => setSelected(selectedProject.FrontEnd)} className={`${selected === selectedProject.FrontEnd ? 'opacity-100 shadow-sm shadow-primary-500' : 'opacity-50 shadow-none'} border uppercase border-white rounded-lg px-1.5 text-xs py-1.5 bg-linear-to-r via-yellow-500 from-primary-500 font-medium to-primary-600 text-white`}>Projetos Front-End</button>
+                    <button onClick={() => setSelected(selectedProject.Mobile)} className={`${selected === selectedProject.Mobile ? 'opacity-100 shadow-sm shadow-primary-500' : 'opacity-50 shadow-none'} border border-white rounded-lg px-2 text-xs py-3 bg-linear-to-r from-primary-500 via-yellow-500 font-medium to-primary-600 text-white uppercase`}>Projetos Mobile(APPS)</button>
+                    <button onClick={() => setSelected(selectedProject.BackEnd)} className={`${selected === selectedProject.BackEnd ? 'opacity-100 shadow-sm shadow-primary-500' : 'opacity-50 shadow-none'} border border-white rounded-lg px-1.5 text-xs py-1.5 bg-linear-to-r from-primary-500 via-yellow-500 font-medium to-primary-600 text-white uppercase`}>Projetos Back-End</button>
                 </div>
             </header>
             <article className='flex w-full flex-col gap-2.5 px-5 py-6 items-center bg-soft-white justify-center'>
@@ -26,7 +26,7 @@ export default function Projects() {
                     <ProjectCard />
                     <ProjectCard />
                 </div>
-                <button className='bg-linear-to-b shadow-sm shadow-black/30 text-white font-medium px-12 py-3 border rounded-md from-yellow-500  to-primary-600'>Ver portólio completo</button>
+                <button className='bg-linear-to-b shadow-[0_0_2px] shadow-black/70 text-white font-medium px-12 py-3 border rounded-full from-yellow-500  to-primary-600'>Ver portólio completo</button>
             </article>
 
         </section>

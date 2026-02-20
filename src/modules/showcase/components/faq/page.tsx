@@ -4,6 +4,9 @@ import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Quest from './components/quest'
+import Image from 'next/image'
+import { BiConversation } from 'react-icons/bi'
+import { PiChatCenteredTextLight } from 'react-icons/pi'
 
 const faqs = [
     {
@@ -44,19 +47,30 @@ export default function Faq() {
     }
     return (
         <section id='faq' className='bg-white-pure py-6 flex flex-col gap-6 w-full h-fit'>
-            <header className='w-full h-fit gap-6 flex flex-col px-5'>
+            <header className='w-full h-fit gap-6 flex flex-col px-5 items-center'>
+                <Image src={'/erykquest.webp'} alt='Eryk Olliver Avatar em dúvida' className='w-40 avatar-flutuante z-100 h-auto relative' width={1920} height={1080} />
                 <Heading level={1} className='text-black-800 uppercase font-bold text-center'>FAQ — Perguntas Frequentes</Heading>
             </header>
-            <article className='flex gap-6 px-5 flex-col'>
-                {faqs.map((f, index) => (
-                    <Quest
-                        key={index}
-                        question={f.question}
-                        response={f.response}
-                        isOpen={openIndex === index}
-                        onToggle={() => handleToggle(index)}
-                    />
-                ))}
+            <article className='flex w-full gap-6 px-5 flex-col'>
+                <div className='w-full h-fit gap-6 items-center justify-center flex flex-col'>
+                    {faqs.map((f, index) => (
+                        <Quest
+                            key={index}
+                            question={f.question}
+                            response={f.response}
+                            isOpen={openIndex === index}
+                            onToggle={() => handleToggle(index)}
+                        />
+                    ))}
+                </div>
+                <Heading level={1} className='text-black-800 font-medium text-center'>Quer entender melhor como funciona?</Heading>
+                <Paragraph className='text-base text-center text-black-600'>
+                    Entre em contato.
+                    Você explica sua necessidade e eu mostro o caminho mais viável para desenvolver.
+                </Paragraph>
+                <button className='bg-linear-to-b flex items-center justify-center gap-1 shadow-[0_0_2px] shadow-black/70 text-white font-medium px-12 py-3 border rounded-full from-yellow-500  to-primary-600'>
+                    Vamos conversar
+                </button>
             </article>
         </section>
     )
