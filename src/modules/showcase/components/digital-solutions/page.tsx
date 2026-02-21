@@ -73,7 +73,7 @@ export default function DigitalSolutions() {
                 <Heading level={1} className='uppercase text-white text-center font-bold'>Soluções Digitais que Escalam Negócios.</Heading>
                 <Paragraph className='text-base text-center text-white/90'>Da estratégia à implementação. Construo produtos digitais com foco em performance, clareza e crescimento sustentável.</Paragraph>
             </header>
-            <article className='flex flex-col items-center gap-6 justify-center w-full h-fit px-5'>
+            <article className='flex flex-col md:flex-row items-center gap-6 justify-center w-full h-fit px-5 max-w-7xl mx-auto'>
                 {cards.map((c, i) => (
                     <SolutionCard key={i} n_position={i + 1} head_line={c.head_line} sub_head_line={c.sub_head_line} description={c.description} icon={c.icon} solution_list={c.solution_list} />
                 ))}

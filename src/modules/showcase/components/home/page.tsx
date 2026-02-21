@@ -6,7 +6,7 @@ import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
 
 export default function Home() {
     return (
-        <section id='home' className='w-full flex flex-col gap-6 h-fit px-5 pt-25 pb-35 relative'>
+        <section id='home' className='w-full flex flex-col gap-6 h-fit px-5 md:px-10 pt-25 pb-35 relative '>
             <Image src={'/erykavatar.webp'} alt='Eryk Olliver Avatar' className='w-40 md:w-70 avatar-flutuante z-100 h-auto absolute right-2 bottom-10' width={1920} height={1080} />
             <div className="absolute inset-0 -z-10">
                 <Image

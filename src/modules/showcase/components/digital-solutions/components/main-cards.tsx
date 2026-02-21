@@ -27,7 +27,7 @@ export default function SolutionCard(props: SolutionCardProps) {
                 </article>
 
                 <article
-                    className="absolute gap-5 w-full h-full px-4 py-2.5 shadow-[0_0_17.9px_5px] shadow-primary-500 flex flex-col items-center justify-start backdrop-blur-xs backface-hidden bg-linear-to-b from-black-600 to-white/60 border-[0.5px] rounded-md border-primary-500"
+                    className="absolute gap-5 overflow-y-auto w-full h-full px-4 py-2.5 shadow-[0_0_17.9px_5px] shadow-primary-500 flex flex-col items-center justify-start backdrop-blur-xs backface-hidden bg-linear-to-b from-black-600 to-white/60 border-[0.5px] rounded-md border-primary-500"
                     style={{ transform: "rotateY(180deg)" }}
                 >
                     <header className="w-full items-center justify-between h-fit flex py-2.5">
@@ -37,8 +37,8 @@ export default function SolutionCard(props: SolutionCardProps) {
                         </div>
                     </header>
                     <article className="w-full border-b-[0.5px] pb-2 border-white flex items-start gap-1.5 flex-col justify-center">
-                        <Heading level={1} className=" text-white font-medium">{props.head_line}</Heading>
-                        <Paragraph className=" text-soft-white font-normal">{props.sub_head_line}</Paragraph>
+                        <Heading level={1} className=" text-white font-medium ">{props.head_line}</Heading>
+                        <Paragraph className=" text-soft-white font-normal wrap-break-word">{props.sub_head_line}</Paragraph>
                         <Paragraph className=" text-soft-white/70 font-light">{props.description}</Paragraph>
                     </article>
                     <div className="w-full flex flex-col gap-1.5">

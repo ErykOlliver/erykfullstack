@@ -8,7 +8,7 @@ import React from 'react'
 export default function ContactForm() {
     return (
         <form className='w-full bg-white/50 p-6 flex flex-col gap-3 border-white backdrop-blur-xs  shadow-[0_0_2px] shadow-black/70 border rounded-md'>
-            <Heading level={1} className='font-medium'>Preencha o formulário </Heading>
+            <Heading level={1} className='font-medium md:text-2xl'>Preencha o formulário </Heading>
             <TextField
                 id="outlined-basic"
                 fullWidth
@@ -66,7 +66,7 @@ export default function ContactForm() {
                 placeholder="Gostaria de um sistema"
             />
             <button className='bg-linear-to-b shadow-[0_0_2px] shadow-black/70 text-white font-medium w-full p-4 border rounded-lg from-yellow-500  to-primary-600 flex items-center justify-between'>Iniciar conversa <ArrowRight /></button>
-            <Paragraph className='text-center underline'>Retorno em até 24h úteis</Paragraph>
+            <Paragraph className='text-center underline md:text-sm'>Retorno em até 24h úteis</Paragraph>
         </form>
     )
 }

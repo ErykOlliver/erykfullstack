@@ -18,7 +18,7 @@ export default function Quest({ isOpen, onToggle, question, response }: QuestPro
                 className={`flex p-3 rounded-md items-center border-[0.5px] bg-soft-white ${isOpen ? 'border-primary-500' : 'border-white-pure'} shadow-xs shadow-black/15 justify-between cursor-pointer`}
                 onClick={onToggle}
             >
-                <Paragraph className='font-medium'>
+                <Paragraph className='font-medium md:text-sm'>
                     {question}
                 </Paragraph>
                 <div className='w-fit h-fit'>
@@ -31,7 +31,7 @@ export default function Quest({ isOpen, onToggle, question, response }: QuestPro
 
             {isOpen && (
                 <div className='p-3 border border-primary-500 border-t-0 rounded-b-md'>
-                    <Paragraph className='font-normal text-black-600/80'>{response}</Paragraph>
+                    <Paragraph className='font-normal text-black-600/80 md:text-sm'>{response}</Paragraph>
                 </div>
             )}
         </div>
