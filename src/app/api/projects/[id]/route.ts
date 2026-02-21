@@ -1,5 +1,5 @@
+import { deleteProject } from '@/src/modules/projects';
 import { NextResponse } from 'next/server';
-import { deleteProject } from '../../../../modules/projects';
 
 export async function DELETE(
   request: Request,

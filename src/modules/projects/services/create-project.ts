@@ -6,7 +6,6 @@ export const createProject = async (data: typeProjectProps) => {
     throw new Error("Título é obrigatório")
   }
 
-  // slug automático exemplo clássico
   const slug = data.title.toLowerCase().replace(/\s+/g, "-")
 
   return ProjectModel.create({
