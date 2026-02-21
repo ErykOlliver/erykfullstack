@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html, body{
+  overflow-x: hidden;
+}
+
 @theme {
     --text-6xl: 4rem;
     --text-6xl--line-height: 4.75rem;
@@ -83,6 +87,7 @@
     /* Base */
     --color-info-100: #DBEAFE;
     /* Background leve */
+    --font-poppins: var(--font-poppins);
 
 }
 
