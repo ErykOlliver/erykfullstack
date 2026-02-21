@@ -7,6 +7,14 @@ export async function create(data: typeNetworkProps) {
     })
 }
 
-export async function list(){
-    
+export async function list() {
+    return await prisma.network.findMany()
+}
+
+export async function eraser(id: number) {
+    return await prisma.network.delete({
+        where: {
+            id
+        }
+    })
 }
