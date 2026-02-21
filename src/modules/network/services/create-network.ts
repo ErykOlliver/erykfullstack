@@ -2,6 +2,6 @@ import * as NetworkModel from '../model'
 import { typeNetworkProps } from "../type";
 
 export const createNetwork = async (data: typeNetworkProps) => {
-    return await NetworkModel.create(data)
+    return await NetworkModel.create({ name: data.name.toLocaleLowerCase(), link: data.link })
 }
 

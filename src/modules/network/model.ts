@@ -2,8 +2,18 @@ import prisma from "@/src/shared/utils/prisma";
 import { typeNetworkProps } from "./type";
 
 export async function create(data: typeNetworkProps) {
-    return await prisma.network.create({
-        data
+    return await prisma.network.upsert({
+        where: {
+            name: data.name
+        },
+        create: {
+            name: data.name,
+            link: data.link
+        },
+        update: {
+            name: data.name,
+            link: data.link
+        }
     })
 }
 
