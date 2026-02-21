@@ -27,7 +27,7 @@ enum Status {
 }
 
 model Skill {
-  id       Int           @id  @default(autoincrement())
+  id       Int           @id @default(autoincrement())
   name     String        @unique
   category SkillCategory
   projects Project[]     @relation("ProjectSkills")
@@ -57,4 +57,10 @@ model Project {
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   skills          Skill[]         @relation("ProjectSkills")
+}
+
+model Network {
+  id   Int    @id @unique @default(autoincrement())
+  name String @unique
+  link String @unique
 }
