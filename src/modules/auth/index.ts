@@ -1,0 +1,1 @@
+export type { typeAdminProps, typeFindAdminProps } from './type'

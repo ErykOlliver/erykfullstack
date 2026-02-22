@@ -1,0 +1,35 @@
+import prisma from "@/src/shared/utils/prisma";
+import * as argon2 from 'argon2'
+
+async function execute() {
+    const admin = process.env.ADMIN_LOGIN;
+    const key = process.env.ADMIN_KEY;
+
+    if (!admin || !key) {
+        throw new Error("Variáveis ADMIN_LOGIN ou ADMIN_KEY não encontradas no .env");
+    }
+
+    const hashedKey = await argon2.hash(key);
+
+    const adm = await prisma.admin.upsert({
+        where: { admin: admin },
+        update: {
+            key: hashedKey,
+        },
+        create: {
+            admin: admin,
+            key: hashedKey,
+        },
+    });
+
+    console.log(" Admin configurado com sucesso:", adm.admin);
+}
+
+execute()
+    .catch((e) => {
+        console.error(" Erro ao criar admin:", e);
+        process.exit(1);
+    })
+    .finally(async () => {
+        await prisma.$disconnect();
+    });

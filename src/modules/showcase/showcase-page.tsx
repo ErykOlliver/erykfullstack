@@ -10,7 +10,7 @@ import { NextResponse } from 'next/server'
 
 export default async function ShowCasePage() {
 
-    const projects = await fetch(`${process.env.PUBLIC_URL}/api/projects`, {
+    const projects = await fetch(`${process.env.NEXT_URL}/api/projects`, {
         cache: 'no-store'
     })
 
