@@ -6,8 +6,7 @@ import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
 
 export default function Home() {
     return (
-        <section id='home' className='w-full flex flex-col gap-6 items-start justify-center h-fit px-5 md:px-10 pt-25 xl:pt-30 pb-35 relative '>
-            <Image src={'/erykavatar.webp'} alt='Eryk Olliver Avatar' className='w-40 md:w-70 xl:w-100 xl:bottom-40 avatar-flutuante z-100 h-auto absolute xl:right-100 right-2 bottom-10' width={1920} height={1080} />
+        <section id='home' className='w-full relative flex flex-col gap-6 items-start justify-center h-fit pt-25 xl:pt-30 pb-35 '>
             <div className="absolute inset-0 -z-10">
                 <Image
                     src="/hero-banner.webp"
@@ -18,35 +17,38 @@ export default function Home() {
                     quality={75}
                 />
             </div>
-            <div className="absolute -z-5 inset-0 bg-white/50 md:bg-white/65 lg:bg-white/30" />
-            <article className='flex flex-col gap-6 max-w-7xl mx-auto'>
-                <Image src={'/FULL-STACK DEVELOPER.svg'} alt='Eryk Olliver Avatar' className='w-75 hidden xl:block h-auto' width={1920} height={1080} />
-                <Heading className='font-semibold text-black-800 xl:w-1/2 md:text-4xl xl:text-5xl' level={1}>Sistemas e <span className='text-primary-500'>Apps</span> que transformam visitantes em clientes.</Heading>
-                <p className='font-normal text-black-600 text-base md:text-lg xl:w-1/2 xl:text-xl'>Desenvolvimento sob medida em <span className='text-black-800 font-semibold'>Web</span> e <span className='text-black-800 font-semibold'>Mobile </span>para empresas que querem escalar com <span className='text-black-800 font-semibold'> tecnologia de verdade </span>.</p>
-                <div className='flex w-full items-center gap-2'>
-                    <button className='hover:from-yellow-600 hover:to-primary-700 transition-colors duration-150 hover:cursor-pointer bg-linear-to-b from-yellow-500 to-primary-600 p-3 md:p-4 rounded-lg border shadow-[0_0_2px] shadow-black/70 border-white font-medium h-fit text-xs md:text-sm w-fit text-white'>Solicitar Orçamento</button>
-                    <button className='hover:bg-gray-300 transition-colors duration-150 hover:cursor-pointer bg-soft-white py-3 rounded-lg border border-white-pure px-5 md:px-6 md:py-4 font-medium shadow-[0_0_2px] shadow-black/70 text-black-800 text-xs md:text-sm'>Ver Projetos</button>
-                </div>
-            </article>
-            <article className='w-fit max-w-7xl xl:ml-[15%] h-fit border gap-2.5 items-center justify-center border-white rounded-md shadow-sm shadow-black/30 p-1 xl:p-5 flex flex-col bg-white/10 backdrop-blur-xs'>
-                <div className='flex gap-1 border-b border-black-300/50 pb-1 justify-start items-center w-full'>
-                    <div className='w-fit h-fit p-1'>
-                        <PiSealCheckFill className='text-success size-6' />
+            <article className='w-full flex flex-col gap-6 max-w-7xl mx-auto items-start justify-center h-fit px-5 md:px-4 relative '>
+                <Image src={'/erykavatar.webp'} alt='Eryk Olliver Avatar' className='w-40 md:w-70 xl:w-100 xl:bottom-20 avatar-flutuante z-100 h-auto absolute xl:right-5 right-2 -bottom-30' width={1920} height={1080} />
+                <div className="absolute -z-5 inset-0 bg-white/50 md:bg-white/65 lg:bg-white/30" />
+                <article className='flex flex-col gap-6 '>
+                    <Image src={'/FULL-STACK DEVELOPER.svg'} alt='Eryk Olliver Avatar' className='w-75 hidden xl:block h-auto' width={1920} height={1080} />
+                    <Heading className='font-semibold text-black-800 xl:w-1/2 md:text-4xl xl:text-5xl' level={1}>Sistemas e <span className='text-primary-500'>Apps</span> que transformam visitantes em clientes.</Heading>
+                    <p className='font-normal text-black-600 font-poppins text-base md:text-lg xl:w-1/2 xl:text-xl'>Desenvolvimento sob medida em <span className='text-black-800 font-semibold'>Web</span> e <span className='text-black-800 font-semibold'>Mobile </span>para empresas que querem escalar com <span className='text-black-800 font-semibold'> tecnologia de verdade </span>.</p>
+                    <div className='flex w-full items-center gap-2'>
+                        <button className='hover:from-yellow-600 hover:to-primary-700 transition-colors duration-150 hover:cursor-pointer bg-linear-to-b from-yellow-500 to-primary-600 font-poppins p-3 md:p-4 rounded-lg border shadow-[0_0_2px] shadow-black/70 border-white font-medium h-fit text-xs md:text-sm w-fit text-white'>Solicitar Orçamento</button>
+                        <button className='hover:bg-gray-300 transition-colors duration-150 hover:cursor-pointer bg-soft-white py-3 rounded-lg border border-white-pure px-5 md:px-6 md:py-4 font-poppins font-medium shadow-[0_0_2px] shadow-black/70 text-black-800 text-xs md:text-sm'>Ver Projetos</button>
                     </div>
-                    <Paragraph className='text-black-600 font-normal md:text-sm'>Sistemas <span className='text-black-800 font-semibold'>diversificados</span> para atender a sua necessidade</Paragraph>
-                </div>
-                <div className='flex gap-1 border-b border-black-300/50 pb-1 justify-start items-center w-full'>
-                    <div className='w-fit h-fit p-1'>
-                        <PiSealCheckFill className='text-success size-6' />
+                </article>
+                <article className='w-fit   h-fit border gap-2.5 items-center justify-center border-white rounded-md shadow-sm shadow-black/30 p-1 xl:p-5 flex flex-col bg-white/10 backdrop-blur-xs'>
+                    <div className='flex gap-1 border-b border-black-300/50 pb-1 justify-start items-center w-full'>
+                        <div className='w-fit h-fit p-1'>
+                            <PiSealCheckFill className='text-success size-6' />
+                        </div>
+                        <Paragraph className='text-black-600 font-normal md:text-sm'>Sistemas <span className='text-black-800 font-semibold'>diversificados</span> para atender a sua necessidade</Paragraph>
                     </div>
-                    <Paragraph className='text-black-600 font-normal md:text-sm'><span className='text-black-800 font-semibold'>Resultados</span> garantidos</Paragraph>
-                </div>
-                <div className='flex gap-1 border-b border-black-300/50 pb-1 justify-start items-center w-full'>
-                    <div className='w-fit h-fit p-1'>
-                        <PiSealCheckFill className='text-success size-6' />
+                    <div className='flex gap-1 border-b border-black-300/50 pb-1 justify-start items-center w-full'>
+                        <div className='w-fit h-fit p-1'>
+                            <PiSealCheckFill className='text-success size-6' />
+                        </div>
+                        <Paragraph className='text-black-600 font-normal md:text-sm'><span className='text-black-800 font-semibold'>Resultados</span> garantidos</Paragraph>
                     </div>
-                    <Paragraph className='text-black-600 font-normal md:text-sm'>Clientes <span className='text-black-800 font-semibold'> atendidos</span> no brasil</Paragraph>
-                </div>
+                    <div className='flex gap-1 border-b border-black-300/50 pb-1 justify-start items-center w-full'>
+                        <div className='w-fit h-fit p-1'>
+                            <PiSealCheckFill className='text-success size-6' />
+                        </div>
+                        <Paragraph className='text-black-600 font-normal md:text-sm'>Clientes <span className='text-black-800 font-semibold'> atendidos</span> no brasil</Paragraph>
+                    </div>
+                </article>
             </article>
             <Image src={'/rectangle.png'} alt='Eryk Olliver Avatar' className='w-full h-auto absolute right-0 -z-1 bottom-0 xl:-bottom-15' width={1920} height={1080} />
         </section>

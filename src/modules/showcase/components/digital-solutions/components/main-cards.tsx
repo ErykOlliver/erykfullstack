@@ -33,11 +33,11 @@ export default function SolutionCard(props: SolutionCardProps) {
                 style={{ transformStyle: "preserve-3d" }}
                 className="relative w-full h-full"
             >
-                <article className="absolute gap-5 w-full h-full p-2.5 shadow-sm shadow-black flex flex-col items-center justify-center backdrop-blur-xs backface-hidden bg-linear-to-b from-black-800 to-white/30 border-[0.5px] rounded-md border-white/70">
-                    <div className="size-15 relative">
+                <article className="absolute gap-5 w-full h-full shadow-sm shadow-black flex flex-col items-center justify-center backdrop-blur-xs backface-hidden bg-linear-to-b from-black-800 to-white/30 border-[0.5px] rounded-md border-white/70">
+                    <div className="size-15 md:size-20 xl:size-25 relative">
                         <Image src={props.icon} alt={`Icone - ${props.head_line}`} fill />
                     </div>
-                    <Heading level={1} className="text-center text-white font-medium">{props.head_line}</Heading>
+                    <Heading level={1} className="text-center text-white font-medium md:text-2xl xl:text-3xl">{props.head_line}</Heading>
                 </article>
 
                 <article
@@ -45,21 +45,21 @@ export default function SolutionCard(props: SolutionCardProps) {
                     style={{ transform: "rotateY(180deg)" }}
                 >
                     <header className="w-full items-center justify-between h-fit flex py-2.5">
-                        <Heading level={2} className=" text-primary-500/30 font-bold">{props.n_position.toString().padStart(2, '0')}</Heading>
-                        <div className="size-10 relative">
+                        <Heading level={2} className=" text-primary-500/30 font-bold md:text-3xl xl:text-4xl">{props.n_position.toString().padStart(2, '0')}</Heading>
+                        <div className="size-10 md:size-15  relative">
                             <Image src={props.icon} alt={`Icone - ${props.head_line}`} fill />
                         </div>
                     </header>
                     <article className="w-full border-b-[0.5px] pb-2 border-white flex items-start gap-1.5 flex-col justify-center">
-                        <Heading level={1} className=" text-white font-medium ">{props.head_line}</Heading>
-                        <Paragraph className=" text-soft-white font-normal wrap-break-word">{props.sub_head_line}</Paragraph>
-                        <Paragraph className=" text-soft-white/70 font-light">{props.description}</Paragraph>
+                        <Heading level={1} className=" text-white font-medium wrap-break-word md:text-2xl xl:text-3xl">{props.head_line}</Heading>
+                        <Paragraph className=" text-soft-white font-normal md:text-lg">{props.sub_head_line}</Paragraph>
+                        <Paragraph className=" text-soft-white/50 font-light md:text-lg">{props.description}</Paragraph>
                     </article>
                     <div className="w-full flex flex-col gap-1.5">
                         {props.solution_list.map((s, i) => (
                             <div key={i} className="flex w-full gap-1 items-center justify-start">
                                 <Check className="text-primary-500" />
-                                <Paragraph className="text-white">{s}</Paragraph>
+                                <Paragraph className="text-white md:text-sm">{s}</Paragraph>
                             </div>
                         ))}
                     </div>

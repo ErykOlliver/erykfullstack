@@ -28,7 +28,7 @@ export default function Projects() {
                     <ProjectCard />
                     <ProjectCard />
                 </div>
-                <button className='hover:shadow-[0_0_15px_2px] transition-all duration-150 hover:border-primary-500 hover:shadow-primary-500 hover:cursor-pointer bg-primary-500 shadow-[0_0_2px] shadow-black/70 text-white font-medium md:text-lg md:px-24 md:p-5 px-12 py-3 border rounded-full uppercase'>Ver portólio completo</button>
+                <button className='hover:shadow-[0_0_15px_2px] transition-all duration-150 hover:border-primary-500 font-poppins hover:shadow-primary-500 hover:cursor-pointer bg-primary-500 shadow-[0_0_2px] shadow-black/70 text-white font-medium md:text-lg md:px-24 md:p-5 px-12 py-3 border rounded-full uppercase'>Ver portólio completo</button>
             </article>
 
         </section>
