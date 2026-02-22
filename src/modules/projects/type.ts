@@ -16,3 +16,25 @@ export type typeProjectProps = {
     category: ProjectCategory
     skills: string[]
 }
+
+export type typeGetProjectProps = {
+    id: string,
+    poster: string,
+    title: string,
+    description: string,
+    slug: string,
+    github?: string,
+    page?: string,
+    designer: string,
+    designerPage: string,
+    applicationType: string,
+    isFeatured?: boolean,
+    status: Status
+    category: ProjectCategory
+    skills: string[]
+}
+
+export type ApiResponse = {
+    status: string,
+    data: typeGetProjectProps[]
+}
