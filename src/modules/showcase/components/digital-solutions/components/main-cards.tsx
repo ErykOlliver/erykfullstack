@@ -6,15 +6,29 @@ import Image from "next/image"
 import { useInView } from "react-intersection-observer"
 import { SolutionCardProps } from "../type/types"
 import { Heading, Paragraph } from "@/src/shared/ui-kit/text"
+import { useEffect, useState } from "react"
 
 
 export default function SolutionCard(props: SolutionCardProps) {
-    const { ref, inView } = useInView({ triggerOnce: true, threshold: 1 })
+    const { ref, inView } = useInView({ threshold: 0.5 })
+    const [isDesktop, setIsDesktop] = useState(false)
+    const [isHovered, setIsHovered] = useState(false)
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
+        setIsDesktop(mediaQuery.matches)
+    }, [])
+
+    const isFlipped = isDesktop ? isHovered : inView
 
     return (
-        <div ref={ref} className="perspective aspect-9/15 w-5/6 h-auto">
+        <div
+            ref={ref}
+            className="perspective aspect-9/15 w-5/6 h-auto"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}>
             <motion.div
-                animate={{ rotateY: inView ? 180 : 0 }}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.8 }}
                 style={{ transformStyle: "preserve-3d" }}
                 className="relative w-full h-full"
