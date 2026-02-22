@@ -17,9 +17,9 @@ export default function Home() {
                     quality={75}
                 />
             </div>
+                <div className="absolute -z-5 inset-0 bg-white/50 md:bg-white/65 lg:bg-white/30" />
             <article className='w-full flex flex-col gap-6 max-w-7xl mx-auto items-start justify-center h-fit px-5 md:px-4 relative '>
                 <Image src={'/erykavatar.webp'} alt='Eryk Olliver Avatar' className='w-40 md:w-70 xl:w-100 xl:bottom-20 avatar-flutuante z-100 h-auto absolute xl:right-5 right-2 -bottom-30' width={1920} height={1080} />
-                <div className="absolute -z-5 inset-0 bg-white/50 md:bg-white/65 lg:bg-white/30" />
                 <article className='flex flex-col gap-6 '>
                     <Image src={'/FULL-STACK DEVELOPER.svg'} alt='Eryk Olliver Avatar' className='w-75 hidden xl:block h-auto' width={1920} height={1080} />
                     <Heading className='font-semibold text-black-800 xl:w-1/2 md:text-4xl xl:text-5xl' level={1}>Sistemas e <span className='text-primary-500'>Apps</span> que transformam visitantes em clientes.</Heading>

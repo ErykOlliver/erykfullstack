@@ -26,22 +26,37 @@ export default function Contact() {
         }
     }, [inView])
     return (
-        <section ref={ref} id='contact' className='bg-linear-to-b from-white via-off-white/95 to-off-white py-6 flex flex-col relative items-center justify-center gap-6 w-full h-fit'>
+        <section ref={ref} id='contact' className='bg-linear-to-b from-white via-off-white/95 to-off-white py-6 flex flex-col relative items-center justify-center gap-6 w-full h-full'>
             {shouldLoadVideo && (
                 <video autoPlay loop muted playsInline poster="/solucoes-image.png" className=' absolute -z-1 inset-0 h-full w-full object-cover'>
                     <source src='/fogbg.webm' type="video/webm" />
                 </video>
             )}
-            <header className='w-full items-center justify-center flex flex-col gap-6 max-w-7xl mx-auto'>
-                <Paragraph className='uppercase text-primary-500 font-medium md:text-lg'>Inicio de parceria</Paragraph>
-                <Image src={'/erykphone.webp'} alt='Eryk Olliver Avatar com celular' className='w-40 md:w-70 avatar-flutuante z-100 h-auto relative' width={1920} height={1080} />
-            </header>
-            <article className='px-5 w-full h-fit max-w-7xl mx-auto'>
-                <ContactForm />
-            </article>
-            <article className='flex flex-col gap-3 items-center justify-center w-full h-fit px-5 max-w-7xl mx-auto'>
-                <h1 className={`font-bold uppercase text-center text-2xl md:text-3xl ${poppins.className}`}>Vamos estruturar seu <span className='text-primary-500'> próximo projeto digital. </span></h1>
-                <p className={`text-center text-black-600 text-sm md:text-lg ${poppins.className}`}>Se você busca performance, clareza técnica e uma base sólida para escalar, vamos conversar.</p>
+            <article className='w-full flex flex-col gap-6 max-w-7xl mx-auto h-full relative items-center justify-center'>
+                <div className='xl:hidden flex flex-col gap-6 items-center justify-center'>
+                    <header className='w-full items-center justify-center flex flex-col gap-6 max-w-7xl mx-auto'>
+                        <Paragraph className='uppercase text-primary-500 font-medium md:text-lg'>Inicio de parceria</Paragraph>
+                        <Image src={'/erykphone.webp'} alt='Eryk Olliver Avatar com celular' className='w-40 md:w-70 avatar-flutuante z-100 h-auto relative' width={1920} height={1080} />
+                    </header>
+                    <article className='px-5 w-full h-fit max-w-7xl mx-auto'>
+                        <ContactForm />
+                    </article>
+                    <article className='flex flex-col gap-3 items-center justify-center w-full h-fit px-5 max-w-7xl mx-auto'>
+                        <h1 className={`font-bold uppercase text-center text-2xl md:text-3xl ${poppins.className}`}>Vamos estruturar seu <span className='text-primary-500'> próximo projeto digital. </span></h1>
+                        <p className={`text-center text-black-600 text-sm md:text-lg ${poppins.className}`}>Se você busca performance, clareza técnica e uma base sólida para escalar, vamos conversar.</p>
+                    </article>
+                </div>
+                <div className='hidden xl:flex w-full h-full gap-6 items-center'>
+                    <article className='flex flex-col gap-3 items-center justify-center w-full h-fit px-5 max-w-7xl mx-auto'>
+                        <header className='w-full items-center justify-center flex flex-col gap-6 max-w-7xl mx-auto'>
+                            <Paragraph className='uppercase text-primary-500 font-medium md:text-lg'>Inicio de parceria</Paragraph>
+                            <Image src={'/erykphone.webp'} alt='Eryk Olliver Avatar com celular' className='w-40 md:w-70 avatar-flutuante z-100 h-auto relative' width={1920} height={1080} />
+                        </header>
+                        <h1 className={`font-bold uppercase text-center text-2xl md:text-3xl ${poppins.className}`}>Vamos estruturar seu <span className='text-primary-500'> próximo projeto digital. </span></h1>
+                        <p className={`text-center text-black-600 text-sm md:text-lg ${poppins.className}`}>Se você busca performance, clareza técnica e uma base sólida para escalar, vamos conversar.</p>
+                    </article>
+                    <ContactForm />
+                </div>
             </article>
         </section>
     )

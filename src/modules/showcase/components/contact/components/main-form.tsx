@@ -7,8 +7,8 @@ import React from 'react'
 
 export default function ContactForm() {
     return (
-        <form className='w-full bg-white/50 p-6 flex flex-col gap-3 border-white backdrop-blur-xs  shadow-[0_0_2px] shadow-black/70 border rounded-md'>
-            <Heading level={1} className='font-medium md:text-2xl'>Preencha o formulário </Heading>
+        <form className='w-full xl:h-full xl:max-h-3/4 xl:w-full bg-white/50 items-start justify-between p-6 flex flex-col gap-3 border-white backdrop-blur-xs  shadow-[0_0_2px] shadow-black/70 border rounded-md'>
+            <Heading level={1} className='font-medium xl:w-1/2 md:text-2xl xl:text-4xl'>Preencha o formulário </Heading>
             <TextField
                 id="outlined-basic"
                 fullWidth
@@ -65,8 +65,8 @@ export default function ContactForm() {
                 className="w-full border rounded-md p-3 border-gray-300 focus:outline-none focus:border-none focus:placeholder:text-primary-500 focus:ring focus:ring-primary-500 transition"
                 placeholder="Gostaria de um sistema"
             />
-            <button className='bg-linear-to-b shadow-[0_0_2px] shadow-black/70 text-white font-medium w-full p-4 border rounded-lg from-yellow-500  to-primary-600 flex items-center justify-between'>Iniciar conversa <ArrowRight /></button>
-            <Paragraph className='text-center underline md:text-sm'>Retorno em até 24h úteis</Paragraph>
+            <button className='bg-linear-to-b shadow-[0_0_2px] shadow-black/70 font-poppins text-white font-medium w-full p-4 border rounded-lg from-yellow-500  to-primary-600 flex items-center justify-between'>Iniciar conversa <ArrowRight /></button>
+            <Paragraph className='text-center underline md:text-sm  w-full'>Retorno em até 24h úteis</Paragraph>
         </form>
     )
 }
