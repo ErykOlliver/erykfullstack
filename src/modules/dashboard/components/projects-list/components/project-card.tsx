@@ -31,7 +31,7 @@ export default function ProjectCard({ data }: props) {
                     />
                 </div>
 
-                <div className="flex flex-col min-w-0">
+                <div className="flex flex-col min-w-0 w-25 xl:w-40">
                     <h1 className="font-semibold text-gray-800 truncate">{data.title}</h1>
                 </div>
 
