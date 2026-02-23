@@ -8,7 +8,7 @@ import { ApiResponse, typeGetProjectProps } from '../projects'
 import { NextResponse } from 'next/server'
 
 
-export default async function ShowCasePage() {
+export default async function ShowCase() {
 
     const projects = await fetch(`${process.env.NEXT_URL}/api/projects`, {
         cache: 'no-store'

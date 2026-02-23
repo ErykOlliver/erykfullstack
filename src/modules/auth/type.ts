@@ -8,3 +8,9 @@ export type typeAdminProps = {
     admin: string,
     key: string
 }
+
+export type typeAlertProps = {
+    title: string,
+    message: string,
+    status: "error" | "warning" | "success"
+}

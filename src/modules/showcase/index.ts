@@ -1,1 +1,1 @@
-export { default as ShowCasePage } from "./showcase-page"
+export { default as ShowCasePage } from "./page"

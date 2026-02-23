@@ -17,7 +17,7 @@ export default function Home() {
                     quality={75}
                 />
             </div>
-                <div className="absolute -z-5 inset-0 bg-white/50 md:bg-white/65 lg:bg-white/30" />
+            <div className="absolute -z-5 inset-0 bg-white/50 md:bg-white/65 lg:bg-white/30" />
             <article className='w-full flex flex-col gap-6 max-w-7xl mx-auto items-start justify-center h-fit px-5 md:px-4 relative '>
                 <Image src={'/erykavatar.webp'} alt='Eryk Olliver Avatar' className='w-40 md:w-70 xl:w-100 xl:bottom-20 avatar-flutuante z-100 h-auto absolute xl:right-5 right-2 -bottom-30' width={1920} height={1080} />
                 <article className='flex flex-col gap-6 '>
@@ -25,7 +25,10 @@ export default function Home() {
                     <Heading className='font-semibold text-black-800 xl:w-1/2 md:text-4xl xl:text-5xl' level={1}>Sistemas e <span className='text-primary-500'>Apps</span> que transformam visitantes em clientes.</Heading>
                     <p className='font-normal text-black-600 font-poppins text-base md:text-lg xl:w-1/2 xl:text-xl'>Desenvolvimento sob medida em <span className='text-black-800 font-semibold'>Web</span> e <span className='text-black-800 font-semibold'>Mobile </span>para empresas que querem escalar com <span className='text-black-800 font-semibold'> tecnologia de verdade </span>.</p>
                     <div className='flex w-full items-center gap-2'>
-                        <button className='hover:from-yellow-600 hover:to-primary-700 transition-colors duration-150 hover:cursor-pointer bg-linear-to-b from-yellow-500 to-primary-600 font-poppins p-3 md:p-4 rounded-lg border shadow-[0_0_2px] shadow-black/70 border-white font-medium h-fit text-xs md:text-sm w-fit text-white'>Solicitar Orçamento</button>
+                        <button className='hover:from-yellow-600 overflow-hidden group hover:to-primary-700 relative transition-colors duration-150 hover:cursor-pointer bg-linear-to-b from-yellow-500 to-primary-600 font-poppins p-3 md:p-4 rounded-lg border shadow-[0_0_2px] shadow-black/70 border-white font-medium h-fit text-xs md:text-sm w-fit text-white'>
+                            Solicitar Orçamento
+                            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-linear-to-r from-transparent via-white/60 to-transparent skew-x-12" />
+                        </button>
                         <button className='hover:bg-gray-300 transition-colors duration-150 hover:cursor-pointer bg-soft-white py-3 rounded-lg border border-white-pure px-5 md:px-6 md:py-4 font-poppins font-medium shadow-[0_0_2px] shadow-black/70 text-black-800 text-xs md:text-sm'>Ver Projetos</button>
                     </div>
                 </article>
