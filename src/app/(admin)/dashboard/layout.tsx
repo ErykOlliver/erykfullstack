@@ -19,7 +19,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
                     <Heading level={1}>Painel</Heading>
                 </div>
             </div>
-            <main className='mt-25 w-screen h-screen flex flex-col px-5 xl:px-10 border items-center justify-start'>
+            <main className='pt-25 w-screen h-screen bg-off-white flex flex-col px-5 gap-5 xl:px-10  items-center justify-start'>
                 {children}
             </main>
         </>
