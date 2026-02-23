@@ -34,7 +34,3 @@ export type typeGetProjectProps = {
     skills: string[]
 }
 
-export type ApiResponse = {
-    status: string,
-    data: typeGetProjectProps[]
-}

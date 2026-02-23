@@ -16,7 +16,7 @@ export default function Projects({ data }: props) {
     const [category, setCategory] = useState<ProjectCategory>(ProjectCategory.FRONTEND)
 
     return (
-        <section id='projects' className='w-full flex flex-col gap-6 h-fit py-6 bg-off-white'>
+        <section id='projects' className='w-full flex flex-col gap-6 h-fit py-6 bg-off-white scroll-mt-18'>
             <header className='w-full h-fit gap-6 flex flex-col px-5 md:px-10 items-center justify-center'>
                 <Heading level={1} className='text-black-800 uppercase font-bold text-center md:text-2xl xl:text-4xl'>Projetos que Geram Resultado.</Heading>
                 <Paragraph className='text-base text-center text-black-600 md:text-lg xl:text-xl md:py-2 xl:w-1/2'>Soluções digitais desenvolvidas com foco em performance, escalabilidade e impacto real no negócio.</Paragraph>

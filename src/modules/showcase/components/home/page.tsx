@@ -1,8 +1,11 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import { CheckCircle } from 'lucide-react'
 import { PiSealCheckFill } from 'react-icons/pi'
 import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
+import { handleScroll } from '@/src/shared/utils/scroll-to-view'
 
 export default function Home() {
     return (
@@ -29,7 +32,7 @@ export default function Home() {
                             Solicitar Orçamento
                             <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-linear-to-r from-transparent via-white/60 to-transparent skew-x-12" />
                         </button>
-                        <button className='hover:bg-gray-300 transition-colors duration-150 hover:cursor-pointer bg-soft-white py-3 rounded-lg border border-white-pure px-5 md:px-6 md:py-4 font-poppins font-medium shadow-[0_0_2px] shadow-black/70 text-black-800 text-xs md:text-sm'>Ver Projetos</button>
+                        <a onClick={(e) => handleScroll(e, "projects")} className='hover:bg-gray-300 transition-colors duration-150 hover:cursor-pointer bg-soft-white py-3 rounded-lg border border-white-pure px-5 md:px-6 md:py-4 font-poppins font-medium shadow-[0_0_2px] shadow-black/70 text-black-800 text-xs md:text-sm'>Ver Projetos</a>
                     </div>
                 </article>
                 <article className='w-fit   h-fit border gap-2.5 items-center justify-center border-white rounded-md shadow-sm shadow-black/30 p-1 xl:p-5 flex flex-col bg-white/10 backdrop-blur-xs'>

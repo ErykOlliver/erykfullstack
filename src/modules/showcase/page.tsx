@@ -4,24 +4,16 @@ import Projects from './components/projects/page'
 import DigitalSolutions from './components/digital-solutions/page'
 import Faq from './components/faq/page'
 import Contact from './components/contact/page'
-import { ApiResponse, typeGetProjectProps } from '../projects'
+import { typeGetProjectProps } from '../projects'
 import { NextResponse } from 'next/server'
+import { getProjects } from '@/src/shared/api/projects/projects'
 
 
 export default async function ShowCase() {
-
-    const projects = await fetch(`${process.env.NEXT_URL}/api/projects`, {
-        cache: 'no-store'
-    })
-
-    const json: ApiResponse = await projects.json()
-
-    const data = json.data
-
     return (
         <>
             <Home />
-            <Projects data={data} />
+            <Projects data={await getProjects()} />
             <DigitalSolutions />
             <Faq />
             <Contact />
