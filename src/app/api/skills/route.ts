@@ -1,5 +1,6 @@
-import { listSkills, typeSkillsProps } from "@/src/modules/skills";
 import { createSkill } from "@/src/modules/skills/services/create-skill";
+import { listSkills } from "@/src/modules/skills/services/list-skill";
+import { typeSkillsProps } from "@/src/modules/skills/type";
 import { NextResponse } from "next/server";
 
 export async function GET() {

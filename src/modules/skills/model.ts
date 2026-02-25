@@ -6,7 +6,8 @@ export async function list() {
 }
 
 export async function eraser(id: number) {
-    return await prisma.skill.delete({ where: { id } })
+    const skill = await prisma.skill.delete({ where: { id } })
+    return skill
 }
 
 export async function create(data: typeSkillsProps) {

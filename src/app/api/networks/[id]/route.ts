@@ -1,4 +1,4 @@
-import { deleteNetwork } from '@/src/modules/network';
+import { deleteNetwork } from '@/src/modules/network/services/delete-network';
 import { NextResponse } from 'next/server';
 
 export async function DELETE(

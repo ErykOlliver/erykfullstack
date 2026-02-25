@@ -26,7 +26,7 @@ export default function Projects({ data }: props) {
                     <CategoryButton text='Back-End' category={category} value={ProjectCategory.BACKEND} onClick={() => setCategory(ProjectCategory.BACKEND)} />
                 </div>
             </header>
-            <article className='flex w-full flex-col gap-6 px-5 md:px-4 py-6 items-center bg-soft-white justify-center'>
+            <article className='flex w-full flex-col gap-6 px-5 md:px-4 py-6 items-center justify-center'>
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full max-w-7xl mx-auto gap-2.5 items-center justify-center'>
                     {data.filter(d => d.category === category).map((d, i) => (
                         <ProjectCard key={i} data={d} />

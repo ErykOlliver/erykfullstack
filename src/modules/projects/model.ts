@@ -18,5 +18,6 @@ export async function list() {
 }
 
 export async function eraser(id: string) {
-    return await prisma.project.delete({ where: { id } })
+    const project = await prisma.project.delete({ where: { id } })
+    return project
 }

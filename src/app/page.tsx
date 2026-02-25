@@ -6,7 +6,7 @@ import { ShowCasePage } from "../modules/showcase";
 export default function App() {
   return (
     <>
-      <button className="fixed bottom-8 animate-pulse shadow-md shadow-black/30 right-4 bg-success text-white p-3.5 rounded-full z-1000"><FaWhatsapp className="size-8" /></button>
+      <button className="fixed bottom-8 animate-pulse shadow-md shadow-black/30 xl:right-10 right-4 bg-success text-white p-3.5 rounded-full z-1000"><FaWhatsapp className="size-8" /></button>
       <NavBar />
       <ShowCasePage />
     </>

@@ -1,5 +1,7 @@
+import { createProject } from "@/src/modules/projects/services/create-project";
+import { listProject } from "@/src/modules/projects/services/list-project";
+import { typeProjectProps } from "@/src/modules/projects/type";
 import { NextResponse } from "next/server";
-import { createProject, listProject, typeProjectProps } from '../../../modules/projects'
 
 
 export async function GET() {

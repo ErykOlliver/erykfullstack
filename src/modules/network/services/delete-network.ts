@@ -1,5 +1,13 @@
+'use server'
+
+
 import * as NetworkModel from '../model'
+import { revalidatePath } from "next/cache";
+
 
 export const deleteNetwork = async (id: number) => {
-    return await NetworkModel.eraser(id)
+    const deleted = await NetworkModel.eraser(id)
+    revalidatePath('/dashboard');
+
+    return deleted
 }

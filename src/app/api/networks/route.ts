@@ -1,4 +1,6 @@
-import { createNetwork, listNetwork, typeNetworkProps } from "@/src/modules/network";
+import { createNetwork } from "@/src/modules/network/services/create-network";
+import { listNetwork } from "@/src/modules/network/services/list-network";
+import { typeNetworkProps } from "@/src/modules/network/type";
 import { NextResponse } from "next/server";
 
 

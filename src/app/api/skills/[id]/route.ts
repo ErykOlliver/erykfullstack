@@ -1,4 +1,4 @@
-import { deleteSkill } from '@/src/modules/skills';
+import { deleteSkill } from '@/src/modules/skills/services/delete-skill';
 import { NextResponse } from 'next/server';
 
 export async function DELETE(
