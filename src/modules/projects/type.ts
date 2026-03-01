@@ -1,8 +1,7 @@
 import { ProjectCategory, Status } from "@/src/generated/prisma/enums"
-import { typeSkillsProps } from "../skills"
 
 export type typeProjectProps = {
-    poster: string,
+    poster: string | File | any,
     title: string,
     description: string,
     slug: string,

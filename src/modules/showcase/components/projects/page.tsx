@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from 'react'
 import ProjectCard from './components/project-card'
 import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
-import { selectedProject } from '@/src/shared/utils/enums'
 import CategoryButton from './components/category-button'
-import { typeGetProjectProps } from '@/src/modules/projects'
+import { typeGetProjectProps } from '@/src/modules/projects/type'
 import { ProjectCategory } from '@/src/generated/prisma/enums'
+import { BoxIcon, LucideInbox } from 'lucide-react'
 
 type props = {
     data: typeGetProjectProps[]
@@ -26,12 +26,24 @@ export default function Projects({ data }: props) {
                     <CategoryButton text='Back-End' category={category} value={ProjectCategory.BACKEND} onClick={() => setCategory(ProjectCategory.BACKEND)} />
                 </div>
             </header>
-            <article className='flex w-full flex-col gap-6 px-5 md:px-4 py-6 items-center justify-center'>
-                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full max-w-7xl mx-auto gap-2.5 items-center justify-center'>
-                    {data.filter(d => d.category === category).map((d, i) => (
-                        <ProjectCard key={i} data={d} />
-                    ))}
-                </div>
+            <article className='flex w-full flex-col gap-6 px-5 md:px-4 py-6  items-center justify-center'>
+                {/* <ProjectCard data={{ applicationType: 'Web', id: '', skills: [], slug: '', designerPage: '', category: 'FULLSTACK', poster: '/', title: 'teste', status: 'EM_ANDAMENTO', description: '', designer: '' }} /> */}
+                {data.filter(d => d.category === category).length > 0 ? (
+                    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 aspect-9/16 md:aspect-auto md:min-h-120 w-full max-w-7xl mx-auto gap-2.5 items-start justify-center'>
+                        {data.filter(d => d.category === category).map((d, i) => (
+                            <ProjectCard key={i} data={d} />
+                        ))}
+                    </div>
+                ) : (
+
+                    <div className='aspect-9/16 md:aspect-auto md:min-h-120 w-full max-w-7xl mx-auto items-center justify-center flex'>
+                        <div className='flex items-center justify-center w-full gap-2 h-full flex-col'>
+                            <LucideInbox />
+                            <h1 className='font-medium text-black-800 text-md text-center font-poppins'>Sem projetos nesta categoria por enquanto.</h1>
+                            <p className='font-normal text-black-600 text-sm text-center font-poppins'>Conteúdo será atualizado conforme novos projetos forem desenvolvidos.</p>
+                        </div>
+                    </div>
+                )}
                 <button className='hover:shadow-[0_0_15px_2px] transition-all duration-150 hover:border-primary-500 font-poppins hover:shadow-primary-500 hover:cursor-pointer bg-primary-500 shadow-[0_0_2px] shadow-black/70 text-white font-medium md:text-lg md:px-24 md:p-5 px-12 py-3 border rounded-full uppercase'>Ver portólio completo</button>
             </article>
 

@@ -22,7 +22,7 @@ enum ProjectCategory {
 }
 
 enum Status {
-  EMANDAMENTO
+  EM_ANDAMENTO
   FINALIZADO
 }
 
@@ -48,7 +48,7 @@ model Project {
   slug            String
   github          String?
   page            String?
-  status          Status          @default(EMANDAMENTO)
+  status          Status          @default(EM_ANDAMENTO)
   designer        String
   designerPage    String
   applicationType String

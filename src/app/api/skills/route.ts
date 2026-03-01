@@ -12,7 +12,7 @@ export async function GET() {
             data: skills
         })
     } catch (error) {
-        NextResponse.json({
+        return NextResponse.json({
             status: 'error',
             message: 'error: Erro ao buscar skills',
             error

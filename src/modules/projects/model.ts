@@ -1,13 +1,13 @@
 import prisma from "@/src/shared/utils/prisma";
 import { typeProjectProps } from './type'
 export async function create(data: typeProjectProps) {
+    const { skills, ...rest } = data
+
     return await prisma.project.create({
         data: {
-            ...data,
+            ...rest,
             skills: {
-                connect: data.skills.map(name => ({
-                    name
-                }))
+                connect: skills.map((name: string) => ({ name }))
             }
         }
     })

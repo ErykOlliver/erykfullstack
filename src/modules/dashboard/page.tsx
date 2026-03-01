@@ -1,20 +1,18 @@
-import React from 'react'
 import KpiPanel from './components/kpi-panel/page'
 import ProjectList from './components/projects-list/page'
 import SkillList from './components/skills-list/page'
 import { getProjects } from '@/src/shared/api/projects/projects'
-import { getSkills } from '@/src/shared/api/skills/skills'
-import { PiPlusBold, PiFolderPlusBold, PiCodeBlockBold } from 'react-icons/pi'
 import CreateProjectModal from './components/create-project-modal/create-project-modal'
 import CreateSkillModal from './components/create-skill-modal/create-skill-modal'
 import CreateNetworkModal from './components/create-network-modal/create-network-modal'
 import NetworkList from './components/nextwork-list/page'
 import { listNetwork } from '../network/services/list-network'
+import { listSkills } from '../skills/services/list-skill'
 
 export default async function Dashboard() {
     const [projects, skills, networks] = await Promise.all([
         getProjects(),
-        getSkills(),
+        listSkills(),
         listNetwork()
     ]);
 
@@ -30,7 +28,7 @@ export default async function Dashboard() {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                    <CreateProjectModal availableSkills={skills} />
+                    <CreateProjectModal availableSkills={skills.filter(s => s.category === 'HARD')} />
                     <CreateSkillModal />
                     <CreateNetworkModal />
                 </div>

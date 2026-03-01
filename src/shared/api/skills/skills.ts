@@ -3,7 +3,7 @@ import { typeSkillsProps } from "@/src/modules/skills/type"
 import { ApiResponse } from "./type"
 
 export async function getSkills() {
-    const skills = await fetch(`${process.env.NEXT_URL}/api/skills`, {
+    const skills = await fetch(`${process.env.NEXT_PUBLIC_NEXT_URL}/api/skills`, {
         cache: 'no-store'
     })
 

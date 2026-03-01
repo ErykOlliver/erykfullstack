@@ -16,6 +16,8 @@
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/client": "^7.4.1",
     "@radix-ui/react-dialog": "^1.1.15",
+    "@supabase/ssr": "^0.8.0",
+    "@supabase/supabase-js": "^2.98.0",
     "argon2": "^0.44.0",
     "dotenv": "^17.3.1",
     "framer-motion": "^12.34.2",

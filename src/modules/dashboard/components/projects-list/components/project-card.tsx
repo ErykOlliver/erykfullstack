@@ -34,7 +34,7 @@ export default function ProjectCard({ data }: props) {
                 <div className="flex items-center gap-4 min-w-0">
                     <div className="relative w-16 h-12 shrink-0 rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
                         <Image
-                            src="/EO-GeesBanner.webp"
+                            src={data.poster}
                             alt={data.title}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"

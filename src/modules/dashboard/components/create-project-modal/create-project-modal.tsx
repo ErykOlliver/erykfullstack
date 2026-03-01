@@ -1,26 +1,30 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Status, ProjectCategory } from '@/src/generated/prisma/enums'
 import { PiXBold, PiUploadSimpleBold, PiPlusBold, PiCheckBold } from 'react-icons/pi'
 import { CircuitBoard } from 'lucide-react'
+import { createProject } from '@/src/modules/projects/services/create-project'
+import { typeProjectProps } from '@/src/modules/projects/type'
+import { typeGetSkillsProps } from '@/src/modules/skills/type'
 
 interface Props {
-    availableSkills: { id: number, name: string }[]
+    availableSkills: typeGetSkillsProps[]
 }
 
 export default function CreateProjectModal({ availableSkills }: Props) {
     const [preview, setPreview] = useState<string | null>(null)
     const [selectedSkills, setSelectedSkills] = useState<string[]>([])
-    const { register, handleSubmit, setValue, watch } = useForm()
+    const { register, handleSubmit, setValue, watch, reset } = useForm<typeProjectProps>()
+    const [isPending, startTransition] = useTransition()
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
         if (file) {
             setPreview(URL.createObjectURL(file))
-            setValue('poster', file)
+            setValue('poster', file as any)
         }
     }
 
@@ -32,16 +36,37 @@ export default function CreateProjectModal({ availableSkills }: Props) {
         )
     }
 
-    const onSubmit = async (data: any) => {
-        const formData = new FormData()
+    const onSubmit = async (data: typeProjectProps) => {
+        startTransition(async () => {
+            const formData = new FormData()
 
-        Object.keys(data).forEach(key => {
-            formData.append(key, data[key])
+            formData.append('title', data.title)
+            formData.append('description', data.description)
+            formData.append('category', data.category)
+            formData.append('status', data.status)
+            formData.append('isFeatured', String(data.isFeatured))
+            formData.append('github', data.github || '')
+            formData.append('page', data.page || '')
+            formData.append('designer', data.designer || '')
+            formData.append('designerPage', data.designerPage || '')
+            formData.append('applicationType', data.applicationType || '')
+
+            if (data.poster) {
+                formData.append('poster', data.poster)
+            }
+
+            formData.append('skills', JSON.stringify(selectedSkills))
+
+            const result = await createProject(formData)
+
+            reset()
+
+            if (result.status === 'success') {
+                console.log("Projeto criado!")
+            } else {
+                alert("Erro: " + result.error)
+            }
         })
-
-        formData.append('skills', JSON.stringify(selectedSkills))
-
-        console.log("Dados prontos para o banco:", Object.fromEntries(formData))
     }
 
     return (
@@ -84,6 +109,10 @@ export default function CreateProjectModal({ availableSkills }: Props) {
                         <div className="flex flex-col gap-1">
                             <label className="text-xs font-bold text-gray-500 uppercase">Título</label>
                             <input {...register('title')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: E-commerce App" />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className="text-xs font-bold text-gray-500 uppercase">Tipo de aplicação</label>
+                            <input {...register('applicationType')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: Api" />
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -147,7 +176,7 @@ export default function CreateProjectModal({ availableSkills }: Props) {
                             <input {...register('designerPage')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Link do Portfólio do Designer" />
                         </div>
 
-                        <button type="submit" className="w-full py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-200">
+                        <button type="submit" disabled={isPending} className="w-full py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-200">
                             Salvar Projeto
                         </button>
                     </form>
