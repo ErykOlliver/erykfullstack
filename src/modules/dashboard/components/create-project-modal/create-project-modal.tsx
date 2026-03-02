@@ -6,9 +6,10 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { Status, ProjectCategory } from '@/src/generated/prisma/enums'
 import { PiXBold, PiUploadSimpleBold, PiPlusBold, PiCheckBold } from 'react-icons/pi'
 import { CircuitBoard } from 'lucide-react'
-import { createProject } from '@/src/modules/projects/services/create-project'
 import { typeCreateProjectProps } from '@/src/modules/projects/type'
 import { typeGetSkillsProps } from '@/src/modules/skills/type'
+import { postProject } from '@/src/shared/api/projects/projects'
+import { useRouter } from "next/navigation"
 
 interface props {
     availableSkills: typeGetSkillsProps[]
@@ -19,6 +20,7 @@ export default function CreateProjectModal({ availableSkills }: props) {
     const [selectedSkills, setSelectedSkills] = useState<number[]>([])
     const { register, handleSubmit, setValue, watch, reset } = useForm<typeCreateProjectProps>()
     const [isPending, startTransition] = useTransition()
+    const router = useRouter()
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] ?? null
@@ -39,37 +41,37 @@ export default function CreateProjectModal({ availableSkills }: props) {
     const onSubmit = async (data: typeCreateProjectProps) => {
 
         try {
-            startTransition(async () => {
-                if (!data.poster) {
-                    console.log('Poster é obrigatorio')
-                    return
-                }
+            if (!data.poster) {
+                console.log('Poster é obrigatorio')
+                return
+            }
 
-                const formData = new FormData()
-                formData.append('poster', data.poster)
-                formData.append('title', data.title)
-                formData.append('description', data.description)
-                formData.append('category', data.category)
-                formData.append('status', data.status)
-                formData.append('isFeatured', String(data.isFeatured))
-                formData.append('github', data.github || '')
-                formData.append('page', data.page || '')
-                formData.append('designer', data.designer || '')
-                formData.append('designerPage', data.designerPage || '')
-                formData.append('applicationType', data.applicationType || '')
-                formData.append('skills', JSON.stringify(selectedSkills))
+            const formData = new FormData()
+            formData.append('poster', data.poster)
+            formData.append('title', data.title)
+            formData.append('description', data.description)
+            formData.append('category', data.category)
+            formData.append('status', data.status)
+            formData.append('isFeatured', String(data.isFeatured))
+            formData.append('github', data.github || '')
+            formData.append('page', data.page || '')
+            formData.append('designer', data.designer || '')
+            formData.append('designerPage', data.designerPage || '')
+            formData.append('applicationType', data.applicationType || '')
+            formData.append('skills', JSON.stringify(selectedSkills))
 
 
-                const result = await createProject(formData)
+            const result = await postProject(formData)
 
-                if (result.status === 'success') {
-                    console.log("Projeto criado!")
-                } else {
-                    alert("Erro: " + result)
-                }
-
+            if (result.status === 'success') {
+                console.log("Projeto criado!")
                 reset()
-            })
+                router.refresh()
+
+            } else {
+                alert("Erro: " + result)
+            }
+
 
         } catch (error) {
             console.log(error)

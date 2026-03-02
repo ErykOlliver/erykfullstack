@@ -8,6 +8,7 @@ import CreateNetworkModal from './components/create-network-modal/create-network
 import NetworkList from './components/nextwork-list/page'
 import { listNetwork } from '../network/services/list-network'
 import { listSkills } from '../skills/services/list-skill'
+import { SkillCategory } from '@/src/generated/prisma/enums'
 
 export default async function Dashboard() {
     const [projects, skills, networks] = await Promise.all([
@@ -17,7 +18,7 @@ export default async function Dashboard() {
     ]);
 
     const featuredCount = projects.filter(p => p.isFeatured).length;
-    const hardSkills = skills.filter(s => s.category === 'HARD')
+    const hardSkills = skills.filter(s => s.category === SkillCategory.HARD)
 
     return (
         <div className="flex flex-col gap-8 w-full max-w-400 mx-auto pb-10">
