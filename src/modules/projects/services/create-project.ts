@@ -8,10 +8,13 @@ import { ProjectCategory, Status } from "@/src/generated/prisma/enums";
 
 export const createProject = async (data: FormData) => {
   try {
-    const title = data.get('title') as string;
-    const posterFile = data.get('poster') as File;
-    const skillsRaw = data.get('skills') as string;
-    const skills = JSON.parse(skillsRaw) as string[];
+    const formData = await data
+
+    const title = formData.get('title') as string;
+    const posterFile = formData.get('poster') as File;
+    const skillsRaw = formData.get('skills') as string;
+
+    const skills = JSON.parse(skillsRaw) as number[];
 
     const slug = title
       .trim()
@@ -41,7 +44,7 @@ export const createProject = async (data: FormData) => {
       skills: skills
     };
 
-    const project = await ProjectModel.create(projectData)
+    await ProjectModel.create(projectData)
 
     revalidatePath('/dashboard')
     revalidatePath('/');
@@ -50,7 +53,7 @@ export const createProject = async (data: FormData) => {
 
   } catch (error) {
     console.error("Erro no Service:", error);
-    return { status: 'error', error: "Erro desconhecido ao salvar projeto" };
+    throw error
   }
 }
 

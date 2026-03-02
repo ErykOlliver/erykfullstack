@@ -17,6 +17,7 @@ export default async function Dashboard() {
     ]);
 
     const featuredCount = projects.filter(p => p.isFeatured).length;
+    const hardSkills = skills.filter(s => s.category === 'HARD')
 
     return (
         <div className="flex flex-col gap-8 w-full max-w-400 mx-auto pb-10">
@@ -28,7 +29,7 @@ export default async function Dashboard() {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                    <CreateProjectModal availableSkills={skills.filter(s => s.category === 'HARD')} />
+                    <CreateProjectModal availableSkills={hardSkills} />
                     <CreateSkillModal />
                     <CreateNetworkModal />
                 </div>

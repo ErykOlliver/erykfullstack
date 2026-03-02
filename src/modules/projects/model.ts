@@ -1,5 +1,6 @@
 import prisma from "@/src/shared/utils/prisma";
 import { typeProjectProps } from './type'
+
 export async function create(data: typeProjectProps) {
     const { skills, ...rest } = data
 
@@ -7,7 +8,7 @@ export async function create(data: typeProjectProps) {
         data: {
             ...rest,
             skills: {
-                connect: skills.map((name: string) => ({ name }))
+                connect: skills.map((id: number) => ({ id }))
             }
         }
     })

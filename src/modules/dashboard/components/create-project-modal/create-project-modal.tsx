@@ -7,66 +7,73 @@ import { Status, ProjectCategory } from '@/src/generated/prisma/enums'
 import { PiXBold, PiUploadSimpleBold, PiPlusBold, PiCheckBold } from 'react-icons/pi'
 import { CircuitBoard } from 'lucide-react'
 import { createProject } from '@/src/modules/projects/services/create-project'
-import { typeProjectProps } from '@/src/modules/projects/type'
+import { typeCreateProjectProps } from '@/src/modules/projects/type'
 import { typeGetSkillsProps } from '@/src/modules/skills/type'
 
-interface Props {
+interface props {
     availableSkills: typeGetSkillsProps[]
 }
 
-export default function CreateProjectModal({ availableSkills }: Props) {
+export default function CreateProjectModal({ availableSkills }: props) {
     const [preview, setPreview] = useState<string | null>(null)
-    const [selectedSkills, setSelectedSkills] = useState<string[]>([])
-    const { register, handleSubmit, setValue, watch, reset } = useForm<typeProjectProps>()
+    const [selectedSkills, setSelectedSkills] = useState<number[]>([])
+    const { register, handleSubmit, setValue, watch, reset } = useForm<typeCreateProjectProps>()
     const [isPending, startTransition] = useTransition()
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
+        const file = e.target.files?.[0] ?? null
         if (file) {
             setPreview(URL.createObjectURL(file))
-            setValue('poster', file as any)
+            setValue('poster', file)
         }
     }
 
-    const toggleSkill = (skillName: string) => {
+    const toggleSkill = (skillId: number) => {
         setSelectedSkills(prev =>
-            prev.includes(skillName)
-                ? prev.filter(s => s !== skillName)
-                : [...prev, skillName]
+            prev.includes(skillId)
+                ? prev.filter(s => s !== skillId)
+                : [...prev, skillId]
         )
     }
 
-    const onSubmit = async (data: typeProjectProps) => {
-        startTransition(async () => {
-            const formData = new FormData()
+    const onSubmit = async (data: typeCreateProjectProps) => {
 
-            formData.append('title', data.title)
-            formData.append('description', data.description)
-            formData.append('category', data.category)
-            formData.append('status', data.status)
-            formData.append('isFeatured', String(data.isFeatured))
-            formData.append('github', data.github || '')
-            formData.append('page', data.page || '')
-            formData.append('designer', data.designer || '')
-            formData.append('designerPage', data.designerPage || '')
-            formData.append('applicationType', data.applicationType || '')
+        try {
+            startTransition(async () => {
+                if (!data.poster) {
+                    console.log('Poster é obrigatorio')
+                    return
+                }
 
-            if (data.poster) {
+                const formData = new FormData()
                 formData.append('poster', data.poster)
-            }
+                formData.append('title', data.title)
+                formData.append('description', data.description)
+                formData.append('category', data.category)
+                formData.append('status', data.status)
+                formData.append('isFeatured', String(data.isFeatured))
+                formData.append('github', data.github || '')
+                formData.append('page', data.page || '')
+                formData.append('designer', data.designer || '')
+                formData.append('designerPage', data.designerPage || '')
+                formData.append('applicationType', data.applicationType || '')
+                formData.append('skills', JSON.stringify(selectedSkills))
 
-            formData.append('skills', JSON.stringify(selectedSkills))
 
-            const result = await createProject(formData)
+                const result = await createProject(formData)
 
-            reset()
+                if (result.status === 'success') {
+                    console.log("Projeto criado!")
+                } else {
+                    alert("Erro: " + result)
+                }
 
-            if (result.status === 'success') {
-                console.log("Projeto criado!")
-            } else {
-                alert("Erro: " + result.error)
-            }
-        })
+                reset()
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -147,13 +154,16 @@ export default function CreateProjectModal({ availableSkills }: Props) {
                                 Tecnologias Utilizadas
                             </label>
                             <div className="flex flex-wrap gap-2 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                                {availableSkills.map((skill) => {
-                                    const isSelected = selectedSkills.includes(skill.name);
+                                {availableSkills.map((skill, i) => {
+                                    const isSelected = selectedSkills.includes(skill.id);
                                     return (
                                         <button
-                                            key={skill.id}
+                                            key={i}
                                             type="button"
-                                            onClick={() => toggleSkill(skill.name)}
+                                            onClick={() => {
+                                                console.log(selectedSkills, skill.name)
+                                                toggleSkill(skill.id)
+                                            }}
                                             className={`
                                                 flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm font-medium transition-all
                                                 ${isSelected
