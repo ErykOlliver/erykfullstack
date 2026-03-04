@@ -1,4 +1,4 @@
-import prisma from "@/src/shared/utils/prisma";
+import prisma from "@/src/shared/libs/prisma";
 import { typeSkillsProps } from "./type";
 
 export async function list() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { CategoryButtonProps } from '../type/types'
-import { selectedProject } from '@/src/shared/utils/enums'
+import { selectedProject } from '@/src/shared/libs/enums'
 
 export default function CategoryButton({ text, category, onClick, value }: CategoryButtonProps) {
     const selectedCategory = () => {

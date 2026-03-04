@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { CheckCircle } from 'lucide-react'
 import { PiSealCheckFill } from 'react-icons/pi'
 import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
-import { handleScroll } from '@/src/shared/utils/scroll-to-view'
+import { handleScroll } from '@/src/shared/libs/scroll-to-view'
 
 export default function Home() {
     return (

@@ -1,4 +1,4 @@
-import prisma from "@/src/shared/utils/prisma";
+import prisma from "@/src/shared/libs/prisma";
 import { typeNetworkProps } from "./type";
 
 export async function create(data: typeNetworkProps) {

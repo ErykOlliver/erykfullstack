@@ -1,4 +1,4 @@
-import prisma from "@/src/shared/utils/prisma";
+import prisma from "@/src/shared/libs/prisma";
 import * as argon2 from 'argon2'
 
 async function execute() {
