@@ -56,7 +56,7 @@ export default function ContactForm() {
             onSubmit={handleSubmit(onSubmit)}
             className='w-full xl:h-fit xl:max-h-3/4 xl:w-full bg-white/50 items-start justify-center p-6 flex flex-col gap-3 border-white backdrop-blur-xs shadow-[0_0_2px] shadow-black/70 border rounded-md'
         >
-            <Heading level={1} className='font-medium xl:w-1/2 md:text-2xl xl:text-4xl'>
+            <Heading level={1} className='font-medium xl:w-1/2 md:text-2xl '>
                 Preencha o formulário
             </Heading>
 
@@ -87,7 +87,8 @@ export default function ContactForm() {
                 type='submit'
                 className='bg-linear-to-b hover:cursor-pointer shadow-[0_0_2px] shadow-black/70 font-poppins text-white font-medium w-full p-4 border rounded-lg from-yellow-500 to-primary-600 flex items-center justify-between'
             >
-                Iniciar conversa <ArrowRight />
+                Iniciar conversa
+                <ArrowRight />
             </button>
 
         </form>

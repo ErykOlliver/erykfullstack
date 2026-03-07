@@ -62,5 +62,5 @@ type paragraphProps = {
 }
 
 export function Paragraph({ font, className, children }: paragraphProps) {
-    return <p className={`text-xs ${className} ${font ? fonts[font] : poppins.className}`} >{children}</p>
+    return <p className={` ${className} ${font ? fonts[font] : poppins.className}`} >{children}</p>
 }

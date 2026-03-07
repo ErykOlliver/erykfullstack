@@ -20,9 +20,9 @@ export default function NavBar() {
                         <nav className='h-fit'>
                             <ul className='flex  gap-4'>
                                 <DropDownNavBar label='soluções' content={<SolutionsMenu />} />
-                                <li className='hover:text-primary-500 select-none text-md font-poppins text-md transition-colors duration-150 uppercase'><a href="">portfólio</a></li>
+                                <li className='hover:text-primary-500 select-none text-sm font-poppins  transition-colors duration-150 uppercase'><a href="">portfólio</a></li>
                                 <DropDownNavBar label='sobre' content={<AboutMenu />} />
-                                <li className='hover:text-primary-500 select-none text-md font-poppins text-md transition-colors duration-150 uppercase'><a href="">contato</a></li>
+                                <li className='hover:text-primary-500 select-none text-sm font-poppins  transition-colors duration-150 uppercase'><a href="">contato</a></li>
                             </ul>
                         </nav>
                     </div>

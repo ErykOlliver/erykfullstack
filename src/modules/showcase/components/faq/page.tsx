@@ -49,9 +49,9 @@ export default function Faq() {
         <section id='faq' className='bg-white-pure py-6 flex flex-col gap-6 w-full h-fit'>
             <header className='w-full h-fit gap-6 flex flex-col px-5 items-center'>
                 <Image src={'/erykquest.webp'} alt='Eryk Olliver Avatar em dúvida' className='w-40 avatar-flutuante z-100 h-auto relative' width={1920} height={1080} />
-                <Heading level={1} className='text-black-800 uppercase font-bold text-center md:text-2xl xl:text-4xl'>FAQ — Perguntas Frequentes</Heading>
+                <Heading level={1} className='text-black-800 uppercase font-bold text-center md:text-2xl'>FAQ — Perguntas Frequentes</Heading>
             </header>
-            <article className='flex w-full gap-10 px-5 flex-col max-w-7xl mx-auto'>
+            <article className='flex w-full gap-10 px-5 flex-col items-center justify-center max-w-7xl mx-auto'>
                 <div className='w-full h-fit gap-6 items-center justify-center flex flex-col'>
                     {faqs.map((f, index) => (
                         <Quest
@@ -63,8 +63,8 @@ export default function Faq() {
                         />
                     ))}
                 </div>
-                <Heading level={1} className='text-black-800 font-medium text-center md:text-2xl xl:text-4xl'>Quer entender melhor como funciona?</Heading>
-                <Paragraph className='text-base text-center text-black-600 md:text-lg xl:text-xl '>
+                <Heading level={1} className='text-black-800 font-medium text-center md:text-2xl'>Quer entender melhor como funciona?</Heading>
+                <Paragraph className='w-1/2 text-base text-center text-black-600 md:text-lg'>
                     Entre em contato.
                     Você explica sua necessidade e eu mostro o caminho mais viável para desenvolver.
                 </Paragraph>

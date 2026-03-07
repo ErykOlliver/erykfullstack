@@ -70,8 +70,8 @@ export default function DigitalSolutions() {
                 </video>
             )}
             <header className='flex flex-col items-center justify-center px-5 gap-6 w-full max-w-7xl'>
-                <Heading level={1} className='uppercase text-white text-center font-bold md:text-2xl xl:text-4xl'>Soluções Digitais que Escalam Negócios.</Heading>
-                <Paragraph className='text-base text-center text-white/90 md:text-lg xl:text-xl'>Da estratégia à implementação. Construo produtos digitais com foco em performance, clareza e crescimento sustentável.</Paragraph>
+                <Heading level={1} className='uppercase text-white text-center font-bold md:text-2xl'>Soluções Digitais que Escalam Negócios.</Heading>
+                <Paragraph className='text-base xl:w-1/2 text-center text-white/90 md:text-lg'>Da estratégia à implementação. Construo produtos digitais com foco em performance, clareza e crescimento sustentável.</Paragraph>
             </header>
             <article className='flex flex-col md:flex-row items-center gap-6 justify-center w-full h-fit px-5 max-w-7xl mx-auto'>
                 {cards.map((c, i) => (
