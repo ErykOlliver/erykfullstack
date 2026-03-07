@@ -25,7 +25,7 @@ export default function DropDownNavBar({ label, content }: props) {
 
     return (
         <div
-            className="relative"
+            className="relative rounded-md"
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
         >
@@ -40,7 +40,7 @@ export default function DropDownNavBar({ label, content }: props) {
             </li>
 
             {isOpen && (
-                <div className="bg-white z-50 top-15 absolute left-1/2 -translate-x-1/2 border border-zinc-200 shadow-md rounded-md">
+                <div className="bg-white z-50 top-15 absolute left-1/2 -translate-x-1/2 border border-zinc-200 border-b-3 border-b-primary-500/50 shadow-md rounded-md">
                     {content}
                 </div>
             )}

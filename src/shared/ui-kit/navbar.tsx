@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import { Heading, Paragraph } from './text'
 import DropDownNavBar from './dropdown-menu/dropdown-navbar'
 import SolutionsMenu from './dropdown-menu/components/solutions-menu'
+import AboutMenu from './dropdown-menu/components/about-menu'
 
 export default function NavBar() {
     const [enabledMenu, setEnabledMenu] = useState(false)
@@ -20,7 +21,7 @@ export default function NavBar() {
                             <ul className='flex  gap-4'>
                                 <DropDownNavBar label='soluções' content={<SolutionsMenu />} />
                                 <li className='hover:text-primary-500 select-none text-md font-poppins text-md transition-colors duration-150 uppercase'><a href="">portfólio</a></li>
-                                <DropDownNavBar label='sobre' />
+                                <DropDownNavBar label='sobre' content={<AboutMenu />} />
                                 <li className='hover:text-primary-500 select-none text-md font-poppins text-md transition-colors duration-150 uppercase'><a href="">contato</a></li>
                             </ul>
                         </nav>
