@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { Heading, Paragraph } from './text'
+import DropDownNavBar from './dropdown-navbar'
 
 export default function NavBar() {
     const [enabledMenu, setEnabledMenu] = useState(false)
@@ -16,10 +17,10 @@ export default function NavBar() {
                     <div className='hidden xl:block h-fit'>
                         <nav className='h-fit'>
                             <ul className='flex  gap-4'>
-                                <li className='hover:text-primary-500 font-poppins text-md transition-colors duration-150 uppercase'><a href="">soluções</a></li>
-                                <li className='hover:text-primary-500 font-poppins text-md transition-colors duration-150 uppercase'><a href="">portfólio</a></li>
-                                <li className='hover:text-primary-500 font-poppins text-md transition-colors duration-150 uppercase'><a href="">sobre</a></li>
-                                <li className='hover:text-primary-500 font-poppins text-md transition-colors duration-150 uppercase'><a href="">contato</a></li>
+                                <DropDownNavBar label='soluções' />
+                                <li className='hover:text-primary-500 select-none text-md font-poppins text-md transition-colors duration-150 uppercase'><a href="">portfólio</a></li>
+                                <DropDownNavBar label='sobre' />
+                                <li className='hover:text-primary-500 select-none text-md font-poppins text-md transition-colors duration-150 uppercase'><a href="">contato</a></li>
                             </ul>
                         </nav>
                     </div>
