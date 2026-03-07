@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Check } from "lucide-react"
 import Image from "next/image"
 import { useInView } from "react-intersection-observer"
-import { SolutionCardProps } from "../type/types"
+import { SolutionCardProps } from "../types"
 import { Heading, Paragraph } from "@/src/shared/ui-kit/text"
 import { useEffect, useState } from "react"
 

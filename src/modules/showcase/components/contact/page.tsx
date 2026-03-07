@@ -32,7 +32,7 @@ export default function Contact() {
                     <source src='/fogbg.webm' type="video/webm" />
                 </video>
             )}
-            <article className='w-full flex flex-col gap-6 max-w-7xl mx-auto h-full relative items-center justify-center'>
+            <article className='w-full flex flex-col gap-6 max-w-7xl mx-auto h-full items-center justify-center'>
                 <div className='xl:hidden flex flex-col gap-6 items-center justify-center'>
                     <header className='w-full items-center justify-center flex flex-col gap-6 max-w-7xl mx-auto'>
                         <Paragraph className='uppercase text-primary-500 font-medium md:text-lg'>Inicio de parceria</Paragraph>

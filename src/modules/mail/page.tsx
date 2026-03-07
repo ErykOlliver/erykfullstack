@@ -1,12 +1,8 @@
 import { Html, Head, Preview, Body, Container, Text, Heading, Section } from '@react-email/components';
+import { typeMailProps } from './type';
 
-type props = {
-    name: string,
-    mail: string,
-    message: string
-}
 
-export default function MailTemplate({ mail, message, name }: props) {
+export default function MailTemplate({ mail, message, name }: typeMailProps) {
     return (
         <Html>
             <Head />
