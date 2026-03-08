@@ -1,7 +1,7 @@
 import { JetBrains_Mono, Poppins } from 'next/font/google'
 import type { Metadata } from "next";
 import "./globals.css";
-import NavBar from '../shared/ui-kit/navbar';
+import NavBar from '../shared/ui-kit/navbar/navbar';
 
 const poppins = Poppins({
   subsets: ['latin'],

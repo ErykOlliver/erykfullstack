@@ -64,7 +64,7 @@ export default function Faq() {
                     ))}
                 </div>
                 <Heading level={1} className='text-black-800 font-medium text-center md:text-2xl'>Quer entender melhor como funciona?</Heading>
-                <Paragraph className='w-1/2 text-base text-center text-black-600 md:text-lg'>
+                <Paragraph className='xl:w-1/2 text-base text-center text-black-600 md:text-lg'>
                     Entre em contato.
                     Você explica sua necessidade e eu mostro o caminho mais viável para desenvolver.
                 </Paragraph>
