@@ -6,16 +6,36 @@ import { NextResponse } from "next/server";
 
 
 
-export async function GET() {
+export async function GET(req: Request) {
     try {
-        const projects = await listProject()
+
+        const { searchParams } = new URL(req.url)
+
+        const page = Number(searchParams.get('page') ?? 1)
+        const limit = Number(searchParams.get("limit") ?? 9)
+        const categoryParam = searchParams.get("category")
+
+        const category = categoryParam
+            ? (categoryParam as ProjectCategory)
+            : undefined
+
+        const offset = (page - 1) * limit
+
+        const result = await listProject(offset, limit, category)
+        const total = result.total
 
         return NextResponse.json({
             status: 'success',
-            data: projects
+            data: result.projects,
+            pagination: {
+                total,
+                page,
+                limit,
+                totalPages: Math.ceil(result.total / limit)
+            }
         })
     } catch (error) {
-        NextResponse.json({
+        return NextResponse.json({
             status: 'error',
             message: 'error: Erro ao buscar projetos',
             error

@@ -25,7 +25,7 @@ export default function NavBar() {
             <div className={`fixed top-0 ${pathname !== '/' ? 'bg-white' : 'bg-white/30'}  border-b z-1000 shadow-sm border-white w-full h-fit p-5 backdrop-blur-xs`}>
                 <div className='w-full h-fit items-center flex justify-between max-w-7xl mx-auto'>
                     <Link href={'/'}>
-                        <Image src={'/logomarca.webp'} className='w-40 h-auto' alt='eryk olliver logomarca' width={300} height={69} />
+                        <Image src={'/logomarca.webp'} className='w-40 h-auto hover:cursor-pointer' alt='eryk olliver logomarca' width={300} height={69} />
                     </Link>
                     <div className='hidden xl:flex items-center justify-center gap-2.5 h-fit'>
                         <nav className='h-fit'>

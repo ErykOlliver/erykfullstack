@@ -49,3 +49,13 @@ export type typeGetProjectProps = {
     skills: number[]
 }
 
+export type typeGetProjectPaginationProps = {
+    status: string,
+    data: typeGetProjectProps[]
+    pagination: {
+        total: number,
+        page: number,
+        limit: number,
+        totalPages: number
+    }
+}

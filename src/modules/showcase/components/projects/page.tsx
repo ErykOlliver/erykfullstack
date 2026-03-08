@@ -1,20 +1,49 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import ProjectCard from './components/project-card'
 import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
 import CategoryButton from './components/category-button'
-import { typeGetProjectProps } from '@/src/modules/projects/type'
+import { typeGetProjectPaginationProps, typeGetProjectProps } from '@/src/modules/projects/type'
 import { ProjectCategory } from '@/src/generated/prisma/enums'
 import { BoxIcon, LucideInbox } from 'lucide-react'
+import { getPaginationProjects } from '@/src/shared/api/projects/projects'
+import { TiArrowRightThick } from 'react-icons/ti'
+import { MdArrowLeft, MdArrowRight } from 'react-icons/md'
 
 type props = {
     data: typeGetProjectProps[]
 }
 
-export default function Projects({ data }: props) {
+export default function Projects({ data: initialData }: props) {
+    const [page, setPage] = useState(1)
+    const [projects, setProjects] = useState<typeGetProjectProps[]>(initialData || [])
+    const [totalPages, setTotalPages] = useState(1)
     const [category, setCategory] = useState<ProjectCategory>(ProjectCategory.FRONTEND)
 
+    const loadProjects = useCallback(async () => {
+        try {
+            const limit = window.innerWidth < 768 ? 3 : 6;
+            const res = await getPaginationProjects(page, category, limit);
+
+            if (res && res.status === 'success') {
+                setProjects(res.data);
+                setTotalPages(res.pagination.totalPages);
+            }
+        } catch (error) {
+            console.error("Erro ao carregar projetos:", error);
+        }
+    }, [page, category]);
+
+    useEffect(() => {
+        loadProjects();
+
+        const handleResize = () => {
+            loadProjects();
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [loadProjects]);
     return (
         <section id='projects' className='w-full flex flex-col gap-6 h-fit py-6 bg-off-white scroll-mt-18'>
             <header className='w-full h-fit gap-6 flex flex-col px-5 md:px-10 items-center justify-center'>
@@ -28,14 +57,13 @@ export default function Projects({ data }: props) {
             </header>
             <article className='flex w-full flex-col gap-6 px-5 md:px-4 py-6  items-center justify-center'>
                 {/* <ProjectCard data={{ applicationType: 'Web', id: '', skills: [], slug: '', designerPage: '', category: 'FULLSTACK', poster: '/', title: 'teste', status: 'EM_ANDAMENTO', description: '', designer: '' }} /> */}
-                {data.filter(d => d.category === category).length > 0 ? (
-                    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 aspect-9/16 md:aspect-auto md:min-h-120 w-full max-w-7xl mx-auto gap-2.5 items-start justify-center'>
-                        {data.filter(d => d.category === category).map((d, i) => (
-                            <ProjectCard key={i} data={d} />
+                {projects.length > 0 ? (
+                    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full max-w-7xl mx-auto gap-6 items-stretch justify-center'>
+                        {projects.map((d, i) => (
+                            <ProjectCard key={d.id || i} data={d} />
                         ))}
                     </div>
                 ) : (
-
                     <div className='aspect-9/16 md:aspect-auto md:min-h-120 w-full max-w-7xl mx-auto items-center justify-center flex'>
                         <div className='flex items-center justify-center w-full gap-2 h-full flex-col'>
                             <LucideInbox />
@@ -44,6 +72,20 @@ export default function Projects({ data }: props) {
                         </div>
                     </div>
                 )}
+
+                <div className="flex w-fit gap-2 mt-6">
+                    <button className='bg-soft-white hover:cursor-pointer hover:text-primary-500 border-2 border-white rounded-md shadow-[0_1px_2px] shadow-black/25 p-2.5' disabled={page === 1} onClick={() => setPage(p => p - 1)}><MdArrowLeft className='size-6 md:size-8' /></button>
+                    {Array.from({ length: totalPages }).map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setPage(i + 1)}
+                            className={`bg-soft-white hover:cursor-pointer font-poppins ${page === i + 1 ? 'text-primary-500' : 'text-black-800'} font-medium hover:text-primary-500 border ${page === i + 1 ? 'border-primary-500' : 'border-white'} rounded-md shadow-[0_1px_2px] shadow-black/25 p-2.5`}
+                        >
+                            {i + 1}
+                        </button>
+                    ))}
+                    <button className='bg-soft-white hover:cursor-pointer hover:text-primary-500 border-2 border-white rounded-md shadow-[0_1px_2px] shadow-black/25 p-2.5' disabled={page === totalPages} onClick={() => setPage(p => p + 1)}><MdArrowRight className='size-6 md:size-8' /></button>
+                </div>
                 <button className='hover:shadow-[0_0_15px_2px] transition-all duration-150 hover:border-primary-500 font-poppins hover:shadow-primary-500 hover:cursor-pointer bg-primary-500 shadow-[0_0_2px] shadow-black/70 text-white font-medium md:text-md md:px-24 md:p-5 px-12 py-3 border rounded-full uppercase'>Ver portólio completo</button>
             </article>
 
