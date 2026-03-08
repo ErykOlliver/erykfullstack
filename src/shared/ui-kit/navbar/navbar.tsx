@@ -31,7 +31,7 @@ export default function NavBar() {
                         <nav className='h-fit'>
                             <ul className='flex  gap-4'>
                                 <DropDownNavBar label='soluções' content={<SolutionsMenu />} />
-                                <Link className='hover:text-primary-500 select-none text-md font-poppins  transition-colors duration-150 uppercase' href={'/contact'}>portfólio</Link>
+                                <Link className='hover:text-primary-500 select-none text-md font-poppins  transition-colors duration-150 uppercase' href={'/portfolio'}>portfólio</Link>
                                 <DropDownNavBar label='sobre' content={<AboutMenu />} />
                                 <Link className='hover:text-primary-500 select-none text-md font-poppins  transition-colors duration-150 uppercase' href={'/contact'}>Contato</Link>
                             </ul>
@@ -61,7 +61,7 @@ export default function NavBar() {
                             <DropDownMenuSection title='Soluções'>
                                 <SolutionsMenuMob />
                             </DropDownMenuSection>
-                            <Link className='hover:text-primary-500 select-none text-sm font-poppins  transition-colors duration-150 uppercase' href={'/porfólio'}>Portfólio</Link>
+                            <Link className='hover:text-primary-500 select-none text-sm font-poppins  transition-colors duration-150 uppercase' href={'/portfolio'}>Portfólio</Link>
                             <DropDownMenuSection title='Sobre'>
                                 <AboutMenuMob />
                             </DropDownMenuSection>

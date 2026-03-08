@@ -10,13 +10,12 @@ import { BoxIcon, LucideInbox } from 'lucide-react'
 import { getPaginationProjects } from '@/src/shared/api/projects/projects'
 import { TiArrowRightThick } from 'react-icons/ti'
 import { MdArrowLeft, MdArrowRight } from 'react-icons/md'
-import Link from 'next/link'
 
 type props = {
     data: typeGetProjectProps[]
 }
 
-export default function Projects({ data: initialData }: props) {
+export default function FullProjects({ data: initialData }: props) {
     const [page, setPage] = useState(1)
     const [projects, setProjects] = useState<typeGetProjectProps[]>(initialData || [])
     const [totalPages, setTotalPages] = useState(1)
@@ -46,14 +45,17 @@ export default function Projects({ data: initialData }: props) {
         return () => window.removeEventListener('resize', handleResize);
     }, [loadProjects]);
     return (
-        <section id='projects' className='w-full flex flex-col gap-6 h-fit py-6 bg-off-white scroll-mt-18'>
-            <header className='w-full h-fit gap-6 flex flex-col px-5 md:px-10 items-center justify-center'>
-                <Heading level={1} className='text-black-800 uppercase font-bold text-center md:text-2xl '>Projetos que Geram Resultado.</Heading>
-                <Paragraph className='text-base text-center text-black-600 md:text-lg md:py-2 xl:w-1/2'>Soluções digitais desenvolvidas com foco em performance, escalabilidade e impacto real no negócio.</Paragraph>
-                <div className='w-full h-fit flex items-center justify-center gap-2.5'>
+        <section id='projects' className='w-full flex flex-col gap-6 h-fit py-20 bg-off-white scroll-mt-18'>
+            <header className='w-full h-fit gap-5 flex flex-col px-5 md:px-10 items-center justify-center'>
+                <Heading level={1} className='text-primary-500 uppercase font-bold text-center md:text-4xl '>Você vai encontrar projetos</Heading>
+                <Paragraph className='text-base text-center text-primary-700 md:text-xl md:py-2 xl:w-1/2'>Web, E-commerce, APIs e muito mais.</Paragraph>
+                <div className='w-full xl:w-2/3 h-fit flex flex-wrap items-center justify-center gap-2.5'>
                     <CategoryButton text='Front-End' category={category} value={ProjectCategory.FRONTEND} onClick={() => setCategory(ProjectCategory.FRONTEND)} />
                     <CategoryButton text='Mobile(APPS)' category={category} value={ProjectCategory.MOBILE} onClick={() => setCategory(ProjectCategory.MOBILE)} />
                     <CategoryButton text='Back-End' category={category} value={ProjectCategory.BACKEND} onClick={() => setCategory(ProjectCategory.BACKEND)} />
+                    <CategoryButton text='Full-Stack' category={category} value={ProjectCategory.FULLSTACK} onClick={() => setCategory(ProjectCategory.FULLSTACK)} />
+                    <CategoryButton text='API' category={category} value={ProjectCategory.API} onClick={() => setCategory(ProjectCategory.API)} />
+                    <CategoryButton text='Game' category={category} value={ProjectCategory.GAME} onClick={() => setCategory(ProjectCategory.GAME)} />
                 </div>
             </header>
             <article className='flex w-full flex-col gap-6 px-5 md:px-4 py-6  items-center justify-center'>
@@ -87,7 +89,6 @@ export default function Projects({ data: initialData }: props) {
                     ))}
                     <button className='bg-soft-white hover:cursor-pointer hover:text-primary-500 border-2 border-white rounded-md shadow-[0_1px_2px] shadow-black/25 p-2.5' disabled={page === totalPages} onClick={() => setPage(p => p + 1)}><MdArrowRight className='size-6 md:size-8' /></button>
                 </div>
-                <Link href={'/portfolio'} className='hover:shadow-[0_0_15px_2px] transition-all duration-150 hover:border-primary-500 font-poppins hover:shadow-primary-500 hover:cursor-pointer bg-primary-500 shadow-[0_0_2px] shadow-black/70 text-white font-medium md:text-md md:px-24 md:p-5 px-12 py-3 border rounded-full uppercase'>Ver portólio completo</Link>
             </article>
 
         </section>

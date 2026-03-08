@@ -20,7 +20,7 @@ export default function ProjectCard({ data }: props) {
             <div className='absolute z-10 px-2 py-0.5 shadow-xs shadow-black/50 left-0 bottom-1/2 -translate-y-1/2 xl:-translate-y-1/8 bg-primary-500 max-w-1/2'><Paragraph className='text-white md:text-sm wrap-break-word'>{data.applicationType}</Paragraph></div>
             <article className='border-t-2 border-black-300/50 backdrop-blur-sm space-y-3 rounded-b-lg p-2 relative w-full h-fit bg-black/25 '>
                 <Heading level={1} className='font-medium text-white md:text-2xl line-clamp-1'>{data.title}</Heading>
-                <Paragraph className='line-clamp-2 text-white/80 md:text-sm'>{data.description}</Paragraph>
+                <Paragraph className='line-clamp-1 text-white/80 md:text-sm'>{data.description}</Paragraph>
             </article>
         </article>
     )

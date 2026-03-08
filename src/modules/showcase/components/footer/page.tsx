@@ -14,9 +14,9 @@ export default function Footer() {
                     <h1 className='text-sm select-none text-primary-500 font-poppins leading-snug font-medium uppercase'>Desenvolvimento Web</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex flex-col gap-1.5 items-start justify-center'>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Web Apps e Sistemas</a></li>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Landing Pages</a></li>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Sites Institucionais e Portfólios</a></li>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Web Apps e Sistemas</Link>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Landing Pages</Link>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Sites Institucionais e Portfólios</Link>
                         </ul>
                     </nav>
                 </article>
@@ -24,8 +24,8 @@ export default function Footer() {
                     <h1 className='text-sm select-none text-primary-500 font-poppins leading-snug font-medium uppercase'>E-commerce e Plataformas</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex flex-col gap-1.5 items-start justify-center'>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Lojas Virtuais com Checkout Completo</a></li>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Painéis Administrativos e Dashboards</a></li>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Lojas Virtuais com Checkout Completo</Link>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Painéis Administrativos e Dashboards</Link>
                         </ul>
                     </nav>
                 </article>
@@ -33,8 +33,8 @@ export default function Footer() {
                     <h1 className='text-sm select-none text-primary-500 leading-snug font-poppins font-medium uppercase'>Backend e Integrações</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex flex-col gap-1.5 items-start justify-center'>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">APIs e Arquitetura Backend</a></li>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Integração com Plataformas e Serviços</a></li>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>APIs e Arquitetura Backend</Link>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Integração com Plataformas e Serviços</Link>
                         </ul>
                     </nav>
                 </article>
@@ -42,8 +42,8 @@ export default function Footer() {
                     <h1 className='text-sm select-none text-primary-500 font-poppins leading-snug font-medium uppercase'>Performance e Otimização</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex flex-col gap-1.5 items-start justify-center'>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">SEO Técnico para Sites</a></li>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Otimização de Performance</a></li>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>SEO Técnico para Sites</Link>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Otimização de Performance</Link>
                         </ul>
                     </nav>
                 </article>
@@ -51,7 +51,7 @@ export default function Footer() {
                     <h1 className='text-sm select-none text-primary-500 font-poppins leading-snug font-medium uppercase'>Aplicações Mobile</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex flex-col gap-1.5 items-start justify-center'>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Aplicativos Modernos para Dispositivos Móveis</a></li>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Aplicativos Modernos para Dispositivos Móveis</Link>
                         </ul>
                     </nav>
                 </article>
@@ -59,8 +59,8 @@ export default function Footer() {
                     <h1 className='text-sm select-none text-primary-500 font-poppins leading-snug font-medium uppercase'>Mais opções</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex flex-col gap-1.5 items-start justify-center'>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Portfólio</a></li>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Quem é Eryk Olliver</a></li>
+                            <Link href={'/portfolio'} className='hover:text-zinc-300 font-poppins text-xs'>Portfólio</Link>
+                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Quem é Eryk Olliver</Link>
                             <Link href={'/contact'} className='hover:text-zinc-300 font-poppins text-xs'>Contato</Link>
                         </ul>
                     </nav>
@@ -69,11 +69,11 @@ export default function Footer() {
                     <h1 className='text-sm select-none text-primary-500 leading-snug font-medium uppercase'>Siga-nos</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex gap-2.5 items-center justify-start'>
-                            <li className='hover:text-zinc-300 '><a href=""><Instagram className='size-6' /></a></li>
-                            <li className='hover:text-zinc-300 '><a href=""><Facebook className='size-6' /></a></li>
-                            <li className='hover:text-zinc-700 '><a href=""><FaGithub className='size-6' /></a></li>
-                            <li className='hover:text-zinc-300 '><a href=""><FaLinkedin className='size-6' /></a></li>
-                            <li className='hover:text-zinc-300 '><a href=""><FaYoutube className='size-6' /></a></li>
+                            <li className='hover:text-zinc-300 '><Instagram className='size-6' /></li>
+                            <li className='hover:text-zinc-300 '><Facebook className='size-6' /></li>
+                            <li className='hover:text-zinc-700 '><FaGithub className='size-6' /></li>
+                            <li className='hover:text-zinc-300 '><FaLinkedin className='size-6' /></li>
+                            <li className='hover:text-zinc-300 '><FaYoutube className='size-6' /></li>
                         </ul>
                     </nav>
                 </article>
