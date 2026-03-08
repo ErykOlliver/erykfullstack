@@ -54,11 +54,14 @@ export default function ContactForm() {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className='w-full xl:h-fit xl:max-h-3/4 xl:w-full bg-white/50 items-start justify-center p-6 flex flex-col gap-3 border-white backdrop-blur-xs shadow-[0_0_2px] shadow-black/70 border rounded-md'
+            className=' bg-white/50 items-start justify-center px-6 py-8 flex flex-col gap-3 border-white backdrop-blur-xs shadow-[0_0_2px] shadow-black/70 border rounded-md'
         >
-            <Heading level={1} className='font-medium xl:w-1/2 md:text-2xl '>
-                Preencha o formulário
+            <Heading level={1} className='font-medium text-primary-500 uppercase md:text-2xl'>
+                Início de parceria
             </Heading>
+            <Paragraph className={`text-left text-black-600 text-md max-w-md font-poppins`}>
+                Se você busca performance, clareza técnica e uma base sólida para escalar, vamos conversar.
+            </Paragraph>
 
             <input
                 type="text"

@@ -7,6 +7,7 @@ import { Heading, Paragraph } from './text'
 import DropDownNavBar from './dropdown-menu/dropdown-navbar'
 import SolutionsMenu from './dropdown-menu/components/solutions-menu'
 import AboutMenu from './dropdown-menu/components/about-menu'
+import Link from 'next/link'
 
 export default function NavBar() {
     const [enabledMenu, setEnabledMenu] = useState(false)
@@ -20,9 +21,9 @@ export default function NavBar() {
                         <nav className='h-fit'>
                             <ul className='flex  gap-4'>
                                 <DropDownNavBar label='soluções' content={<SolutionsMenu />} />
-                                <li className='hover:text-primary-500 select-none text-sm font-poppins  transition-colors duration-150 uppercase'><a href="">portfólio</a></li>
+                                <Link className='hover:text-primary-500 select-none text-sm font-poppins  transition-colors duration-150 uppercase' href={'/contact'}>portfólio</Link>
                                 <DropDownNavBar label='sobre' content={<AboutMenu />} />
-                                <li className='hover:text-primary-500 select-none text-sm font-poppins  transition-colors duration-150 uppercase'><a href="">contato</a></li>
+                                <Link className='hover:text-primary-500 select-none text-sm font-poppins  transition-colors duration-150 uppercase' href={'/contact'}>Contato</Link>
                             </ul>
                         </nav>
                     </div>

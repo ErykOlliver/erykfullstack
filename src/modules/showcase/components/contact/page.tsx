@@ -35,27 +35,38 @@ export default function Contact() {
             <article className='w-full flex flex-col gap-6 max-w-7xl mx-auto h-fit items-center justify-center'>
                 <div className='xl:hidden flex flex-col gap-6 items-center justify-center w-full h-fit'>
                     <header className='w-full items-center justify-center flex flex-col gap-6 max-w-7xl mx-auto'>
-                        <Paragraph className='uppercase text-primary-500 font-medium md:text-lg'>Inicio de parceria</Paragraph>
                         <Image src={'/erykphone.webp'} alt='Eryk Olliver Avatar com celular' className='w-40 md:w-70 avatar-flutuante z-100 h-auto relative' width={1920} height={1080} />
                     </header>
                     <article className='px-5 w-full h-fit max-w-7xl mx-auto'>
                         <ContactForm />
                     </article>
                     <article className='flex flex-col gap-3 items-center justify-center w-full h-fit px-5 max-w-7xl mx-auto'>
-                        <h1 className={`font-bold uppercase text-center text-2xl md:text-3xl ${poppins.className}`}>Vamos estruturar seu <span className='text-primary-500'> próximo projeto digital. </span></h1>
-                        <p className={`text-center text-black-600 text-sm md:text-lg ${poppins.className}`}>Se você busca performance, clareza técnica e uma base sólida para escalar, vamos conversar.</p>
+                        <h1 className={`font-bold uppercase text-center text-2xl md:text-3xl ${poppins.className}`}>Vamos estruturar seu <span className='text-primary-500'>próximo projeto digital. </span></h1>
                     </article>
                 </div>
-                <div className='hidden xl:flex w-full h-full gap-6 items-center'>
-                    <article className='flex flex-col gap-3 items-center justify-center w-full h-fit px-5 max-w-7xl mx-auto'>
-                        <header className='w-full items-center justify-center flex flex-col gap-6 max-w-7xl mx-auto'>
-                            <Paragraph className='uppercase text-primary-500 font-medium md:text-md'>Inicio de parceria</Paragraph>
-                            <Image src={'/erykphone.webp'} alt='Eryk Olliver Avatar com celular' className='w-40 md:w-70 avatar-flutuante z-100 h-auto relative' width={1920} height={1080} />
+                <div className='hidden xl:grid grid-cols-2 w-full h-full gap-12 items-center px-10'>
+                    <article className='flex flex-col gap-6 items-center justify-center w-full h-fit'>
+                        <header className='flex flex-col gap-4 items-center justify-center'>
+                            <Image
+                                src={'/erykphone.webp'}
+                                alt='Eryk Olliver Avatar'
+                                className='w-60 avatar-flutuante z-10 h-auto'
+                                width={500}
+                                height={500}
+                            />
+                            <h1 className={`font-bold uppercase text-center text-4xl leading-tight font-poppins`}>
+                                Vamos estruturar seu <br />
+                                <span className='text-primary-500'>próximo projeto digital.</span>
+                            </h1>
                         </header>
-                        <h1 className={`font-bold uppercase text-center text-2xl md:text-2xl xl:w-2/3 ${poppins.className}`}>Vamos estruturar seu <span className='text-primary-500'> próximo projeto digital. </span></h1>
-                        <p className={`text-center text-black-600 text-sm md:text-md ${poppins.className}`}>Se você busca performance, clareza técnica e uma base sólida para escalar, vamos conversar.</p>
+
                     </article>
-                    <ContactForm />
+
+                    <div className="w-full flex justify-center lg:justify-end">
+                        <div className="w-full max-w-lg">
+                            <ContactForm />
+                        </div>
+                    </div>
                 </div>
             </article>
         </section>

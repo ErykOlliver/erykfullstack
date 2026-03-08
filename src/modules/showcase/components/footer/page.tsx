@@ -1,5 +1,6 @@
 import { Facebook, Github, Instagram } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { BiLogoGithub } from 'react-icons/bi'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
@@ -60,17 +61,17 @@ export default function Footer() {
                         <ul className='flex flex-col gap-1.5 items-start justify-center'>
                             <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Portfólio</a></li>
                             <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Quem é Eryk Olliver</a></li>
-                            <li className='hover:text-zinc-300 font-poppins text-xs'><a href="">Contato</a></li>
+                            <Link href={'/contact'} className='hover:text-zinc-300 font-poppins text-xs'>Contato</Link>
                         </ul>
                     </nav>
                 </article>
                 <article className='w-full h-full flex flex-col gap-3'>
                     <h1 className='text-sm select-none text-primary-500 leading-snug font-medium uppercase'>Siga-nos</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
-                        <ul className='flex gap-1.5 items-center justify-start'>
+                        <ul className='flex gap-2.5 items-center justify-start'>
                             <li className='hover:text-zinc-300 '><a href=""><Instagram className='size-6' /></a></li>
                             <li className='hover:text-zinc-300 '><a href=""><Facebook className='size-6' /></a></li>
-                            <li className='hover:text-zinc-300 '><a href=""><FaGithub className='size-6' /></a></li>
+                            <li className='hover:text-zinc-700 '><a href=""><FaGithub className='size-6' /></a></li>
                             <li className='hover:text-zinc-300 '><a href=""><FaLinkedin className='size-6' /></a></li>
                             <li className='hover:text-zinc-300 '><a href=""><FaYoutube className='size-6' /></a></li>
                         </ul>

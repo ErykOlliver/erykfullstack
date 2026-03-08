@@ -1,6 +1,7 @@
 import { JetBrains_Mono, Poppins } from 'next/font/google'
 import type { Metadata } from "next";
 import "./globals.css";
+import NavBar from '../shared/ui-kit/navbar';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -20,6 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+
       <body className={`h-screen w-screen relative ${poppins.variable}`}>
         {children}
       </body>
