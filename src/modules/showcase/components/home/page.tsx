@@ -40,19 +40,19 @@ export default function Home() {
                         <div className='w-fit h-fit p-1'>
                             <PiSealCheckFill className='text-success size-6' />
                         </div>
-                        <Paragraph className='text-black-600 font-normal md:text-sm'>Sistemas <span className='text-black-800 font-semibold'>diversificados</span> para atender a sua necessidade</Paragraph>
+                        <Paragraph className='text-black-600 font-normal text-xs md:text-sm'>Sistemas <span className='text-black-800 font-semibold'>diversificados</span> para atender a sua necessidade</Paragraph>
                     </div>
                     <div className='flex gap-1 border-b border-black-300/50 pb-1 justify-start items-center w-full'>
                         <div className='w-fit h-fit p-1'>
                             <PiSealCheckFill className='text-success size-6' />
                         </div>
-                        <Paragraph className='text-black-600 font-normal md:text-sm'><span className='text-black-800 font-semibold'>Resultados</span> garantidos</Paragraph>
+                        <Paragraph className='text-black-600 font-normal text-xs md:text-sm'><span className='text-black-800 font-semibold'>Resultados</span> garantidos</Paragraph>
                     </div>
                     <div className='flex gap-1 border-b border-black-300/50 pb-1 justify-start items-center w-full'>
                         <div className='w-fit h-fit p-1'>
                             <PiSealCheckFill className='text-success size-6' />
                         </div>
-                        <Paragraph className='text-black-600 font-normal md:text-sm'>Clientes <span className='text-black-800 font-semibold'> atendidos</span> no brasil</Paragraph>
+                        <Paragraph className='text-black-600 font-normal text-xs md:text-sm'>Clientes <span className='text-black-800 font-semibold'> atendidos</span> no brasil</Paragraph>
                     </div>
                 </article>
             </article>
