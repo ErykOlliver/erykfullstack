@@ -106,7 +106,7 @@ export default function SolutionsMenu() {
           <nav className="py-3 ">
             <ul className="flex flex-col gap-2">
               {items.map(item => (
-                <li key={item.id} className="flex hover:ml-2 hover:cursor-pointer text-black-600 select-none hover:bg-primary-500/20 transition-all duration-150 items-center p-1.5 gap-2 rounded-md">
+                <li key={item.id} className="flex hover:-translate-y-1 hover:cursor-pointer text-black-600 select-none hover:bg-primary-500/20 transition-all duration-150 items-center p-1.5 gap-2 rounded-md">
                   <div className="w-fit h-fit p-1">
                     {item.icon}
                   </div>

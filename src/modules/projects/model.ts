@@ -9,7 +9,7 @@ export async function create(data: typeProjectProps) {
         data: {
             ...rest,
             skills: {
-                connect: skills.map((id: number) => ({ id }))
+                connect: skills.map((s) => ({ id: s.id }))
             }
         }
     })
@@ -36,6 +36,25 @@ export async function findUnique(slug: string) {
     const findProject = await prisma.project.findUnique({
         where: {
             slug
+        },
+        select: {
+            description: true,
+            designer: true,
+            github: true,
+            page: true,
+            skills: {
+                select: {
+                    name: true
+                }
+            },
+            title: true,
+            category: true,
+            applicationType: true,
+            designerPage: true,
+            isFeatured: true,
+            poster: true,
+            slug: true,
+            status: true,
         }
     })
     return findProject

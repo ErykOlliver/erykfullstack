@@ -13,7 +13,10 @@ export type typeProjectProps = {
     isFeatured?: boolean,
     status: Status
     category: ProjectCategory
-    skills: number[]
+    skills: {
+        id: number
+        name: string
+    }[]
 }
 
 export type typeCreateProjectProps = {
@@ -29,7 +32,10 @@ export type typeCreateProjectProps = {
     isFeatured?: boolean,
     status: Status
     category: ProjectCategory
-    skills: number[]
+    skills: {
+        id: number
+        name: string
+    }[]
 }
 
 export type typeGetProjectProps = {
@@ -46,7 +52,10 @@ export type typeGetProjectProps = {
     isFeatured?: boolean,
     status: Status
     category: ProjectCategory
-    skills: number[]
+    skills: {
+        id: number
+        name: string
+    }[]
 }
 
 export type typeGetProjectPaginationProps = {
