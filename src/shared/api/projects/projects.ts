@@ -1,5 +1,6 @@
 import { ProjectCategory } from "@/src/generated/prisma/enums"
 import { ApiResponse } from "./type"
+import { resolveVariantFromProps } from "framer-motion";
 
 export async function getPaginationProjects(page = 1, category?: ProjectCategory, limit = 6) {
     const baseUrl = typeof window !== 'undefined'
@@ -44,4 +45,14 @@ export async function postProject(data: FormData) {
     }
 
     return await response.json()
+}
+
+export async function findUniqueProject(slug: string) {
+    const response = await fetch(`/api/project-details/${slug}`, {
+        method: 'GET',
+        cache: 'no-store'
+    })
+
+    return await response.json()
+
 }

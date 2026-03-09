@@ -1,5 +1,5 @@
 import prisma from "@/src/shared/libs/prisma";
-import { typeProjectProps } from './type'
+import { typeGetProjectProps, typeProjectProps } from './type'
 import { ProjectCategory } from "@/src/generated/prisma/enums";
 
 export async function create(data: typeProjectProps) {
@@ -30,6 +30,15 @@ export async function list(offset: number, limit: number, category?: ProjectCate
     })
 
     return { total, projects }
+}
+
+export async function findUnique(slug: string) {
+    const findProject = await prisma.project.findUnique({
+        where: {
+            slug
+        }
+    })
+    return findProject
 }
 
 export async function eraser(id: string) {
