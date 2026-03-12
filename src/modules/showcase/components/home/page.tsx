@@ -6,6 +6,7 @@ import { CheckCircle } from 'lucide-react'
 import { PiSealCheckFill } from 'react-icons/pi'
 import { Heading, Paragraph } from '@/src/shared/ui-kit/text'
 import { handleScroll } from '@/src/shared/libs/scroll-to-view'
+import Link from 'next/link'
 
 export default function Home() {
     return (
@@ -28,10 +29,10 @@ export default function Home() {
                     <Heading className='font-semibold text-black-800 xl:w-1/2 md:text-3xl' level={1}>Sistemas e <span className='text-primary-500'>Apps</span> que transformam visitantes em clientes.</Heading>
                     <p className='font-normal text-black-600 font-poppins text-base md:text-lg xl:w-1/2'>Desenvolvimento sob medida em <span className='text-black-800 font-semibold'>Web</span> e <span className='text-black-800 font-semibold'>Mobile </span>para empresas que querem escalar com <span className='text-black-800 font-semibold'> tecnologia de verdade </span>.</p>
                     <div className='flex w-full items-center gap-2'>
-                        <button className='hover:from-yellow-600 hover:-translate-y-1 overflow-hidden group hover:to-primary-700 relative transition-all duration-150 hover:cursor-pointer bg-linear-to-b from-yellow-500 to-primary-600 font-poppins p-3 md:p-4 rounded-lg border shadow-[0_0_2px] shadow-black/70 border-white font-medium h-fit text-xs md:text-sm w-fit text-white'>
+                        <Link href={'https://wa.link/6y2rz4'} target='_blank' className='hover:from-yellow-600 hover:-translate-y-1 overflow-hidden group hover:to-primary-700 relative transition-all duration-150 hover:cursor-pointer bg-linear-to-b from-yellow-500 to-primary-600 font-poppins p-3 md:p-4 rounded-lg border shadow-[0_0_2px] shadow-black/70 border-white font-medium h-fit text-xs md:text-sm w-fit text-white'>
                             Solicitar Orçamento
                             <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-linear-to-r from-transparent via-white/60 to-transparent skew-x-12" />
-                        </button>
+                        </Link>
                         <a onClick={(e) => handleScroll(e, "projects")} className='hover:bg-gray-300 hover:-translate-y-1 transition-all duration-150 hover:cursor-pointer bg-soft-white py-3 rounded-lg border border-white-pure px-5 md:px-6 md:py-4 font-poppins font-medium shadow-[0_0_2px] shadow-black/70 text-black-800 text-xs md:text-sm'>Ver Projetos</a>
                     </div>
                 </article>

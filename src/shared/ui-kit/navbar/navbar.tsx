@@ -37,11 +37,11 @@ export default function NavBar() {
                             </ul>
                         </nav>
                         <nav className='flex items-center justify-center gap-1 border-l pl-2.5'>
-                            <NetworkButton icon={<Instagram className='size-6' />} label='Instagram' />
-                            <NetworkButton icon={<Facebook className='size-6' />} label='Facebook' />
-                            <NetworkButton icon={<FaGithub className='size-6' />} label='Github' />
-                            <NetworkButton icon={<FaLinkedin className='size-6' />} label='Linkedin' />
-                            <NetworkButton icon={<FaYoutube className='size-6' />} label='Youtube' />
+                            <NetworkButton link='https://www.instagram.com/dev.erykolliver/' icon={<Instagram className='size-6' />} label='Instagram' />
+                            <NetworkButton link='https://www.facebook.com/profile.php?id=61586765793633' icon={<Facebook className='size-6' />} label='Facebook' />
+                            <NetworkButton link='https://github.com/ErykOlliver' icon={<FaGithub className='size-6' />} label='Github' />
+                            <NetworkButton link='https://www.linkedin.com/in/eryk-olliver-44a0a5295/' icon={<FaLinkedin className='size-6' />} label='Linkedin' />
+                            <NetworkButton link='https://www.youtube.com/@erykolliver' icon={<FaYoutube className='size-6' />} label='Youtube' />
                         </nav>
                     </div>
                     <div className='xl:hidden'>

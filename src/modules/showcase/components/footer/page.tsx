@@ -60,7 +60,7 @@ export default function Footer() {
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex flex-col gap-1.5 items-start justify-center'>
                             <Link href={'/portfolio'} className='hover:text-zinc-300 font-poppins text-xs'>Portfólio</Link>
-                            <Link href={''} className='hover:text-zinc-300 font-poppins text-xs'>Quem é Eryk Olliver</Link>
+                            <Link href={'/about-me'} className='hover:text-zinc-300 font-poppins text-xs'>Quem é Eryk Olliver</Link>
                             <Link href={'/contact'} className='hover:text-zinc-300 font-poppins text-xs'>Contato</Link>
                         </ul>
                     </nav>
@@ -69,11 +69,31 @@ export default function Footer() {
                     <h1 className='text-sm select-none text-primary-500 leading-snug font-medium uppercase'>Siga-nos</h1>
                     <nav className=' w-full h-fit text-zinc-500'>
                         <ul className='flex gap-2.5 items-center justify-start'>
-                            <li className='hover:text-zinc-300 '><Instagram className='size-6' /></li>
-                            <li className='hover:text-zinc-300 '><Facebook className='size-6' /></li>
-                            <li className='hover:text-zinc-700 '><FaGithub className='size-6' /></li>
-                            <li className='hover:text-zinc-300 '><FaLinkedin className='size-6' /></li>
-                            <li className='hover:text-zinc-300 '><FaYoutube className='size-6' /></li>
+                            <li className='hover:text-zinc-300 '>
+                                <Link href={'https://www.instagram.com/dev.erykolliver/'} target='_blank' className='size-6'>
+                                    <Instagram className='size-6' />
+                                </Link>
+                            </li>
+                            <li className='hover:text-zinc-300 '>
+                                <Link href={'https://www.facebook.com/profile.php?id=61586765793633'} target='_blank' className='size-6'>
+                                    <Facebook className='size-6' />
+                                </Link>
+                            </li>
+                            <li className='hover:text-zinc-300 '>
+                                <Link href={'https://github.com/ErykOlliver'} target='_blank' className='size-6'>
+                                    <FaGithub className='size-6' />
+                                </Link>
+                            </li>
+                            <li className='hover:text-zinc-300 '>
+                                <Link href={'https://www.linkedin.com/in/eryk-olliver-44a0a5295/'} target='_blank' className='size-6'>
+                                    <FaLinkedin className='size-6' />
+                                </Link>
+                            </li>
+                            <li className='hover:text-zinc-300 '>
+                                <Link href={'https://www.youtube.com/@erykolliver'} target='_blank' className='size-6'>
+                                    <FaYoutube className='size-6' />
+                                </Link>
+                            </li>
                         </ul>
                     </nav>
                 </article>
