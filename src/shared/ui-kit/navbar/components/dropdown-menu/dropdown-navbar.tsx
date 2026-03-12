@@ -29,7 +29,7 @@ export default function DropDownNavBar({ label, content }: props) {
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
         >
-            <li className="hover:text-primary-500 cursor-pointer select-none font-poppins flex text-md items-center gap-1 transition-colors duration-150 uppercase">
+            <li className="hover:text-primary-500 hover:-translate-y-1 cursor-pointer select-none font-poppins flex text-md items-center gap-1 transition-all duration-150 uppercase">
                 {label}
 
                 <TiArrowSortedDown
