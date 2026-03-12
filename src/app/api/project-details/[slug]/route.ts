@@ -1,8 +1,8 @@
 import { FindUniqueProject } from "@/src/modules/projects/services/find-unique-project"
 import { NextResponse } from "next/server"
 
-export async function GET(req: Request, { params }: { params: { slug: string } }) {
-    const { slug } = await params
+export async function GET(req: Request, context: { params: Promise<{ slug: string }>}) {
+    const { slug } = await context.params
 
     try {
         const project = await FindUniqueProject(slug)

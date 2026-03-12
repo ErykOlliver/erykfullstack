@@ -52,7 +52,10 @@ export async function POST(req: Request) {
         const posterFile = formData.get('poster') as File;
         const skillsRaw = formData.get('skills') as string;
 
-        const skills = JSON.parse(skillsRaw) as number[];
+        const skills = JSON.parse(skillsRaw) as {
+            id: number
+            name: string
+        }[];
 
         if (!posterFile) {
             return NextResponse.json({ error: "Poster obrigatório" }, { status: 400 })

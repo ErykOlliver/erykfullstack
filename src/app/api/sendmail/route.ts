@@ -21,7 +21,7 @@ export async function POST(req: Request) {
             }, { status: 401 })
         }
 
-        const mail = await sendMail({ name: body.name, mail: body.mail, message: body.message })
+        const mail = await sendMail({ name: body.name, mail: body.mail, phone: body.phone })
 
         if (!mail) {
             return NextResponse.json({
