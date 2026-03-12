@@ -80,7 +80,7 @@ export default function ContactForm() {
             <input
                 type="tel"
                 placeholder="Telefone"
-                {...register('mail')}
+                {...register('phone')}
                 className="w-full border rounded-md p-3 border-gray-300 focus:outline-none focus:ring focus:ring-primary-500 focus:border-primary-500 transition"
             />
 

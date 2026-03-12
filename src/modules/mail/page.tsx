@@ -2,22 +2,56 @@ import { Html, Head, Preview, Body, Container, Text, Heading, Section } from '@r
 import { typeMailProps } from './type';
 
 
-export default function MailTemplate({ mail, message, name }: typeMailProps) {
+export function LeadTemplate({ name, mail, phone }: typeMailProps) {
     return (
         <Html>
             <Head />
-            <Preview>Novo contato de {name}</Preview>
-            <Body style={{ backgroundColor: '#f6f9fc', padding: '20px' }}>
-                <Container style={{ backgroundColor: '#ffffff', border: '1px solid #e1e1e1', padding: '40px' }}>
-                    <Heading>Novo contato via Portfólio</Heading>
-                    <Section>
-                        <Text><strong>Nome:</strong> {name}</Text>
-                        <Text><strong>E-mail:</strong> {mail}</Text>
-                        <Text><strong>Mensagem:</strong></Text>
-                        <Text style={{ fontStyle: 'italic' }}>{message}</Text>
-                    </Section>
+            <Preview>Novo contato do site</Preview>
+
+            <Body>
+                <Container>
+                    <Heading>Novo Lead pelo Portfólio</Heading>
+
+                    <Text><strong>Nome:</strong> {name}</Text>
+                    <Text><strong>Email:</strong> {mail}</Text>
+                    <Text><strong>Telefone:</strong> {phone}</Text>
                 </Container>
             </Body>
         </Html>
-    );
+    )
+}
+
+export function ClientTemplate({ name }: typeMailProps) {
+    return (
+        <Html>
+            <Head />
+            <Preview>Recebemos seu contato</Preview>
+
+            <Body>
+                <Container>
+
+                    <Heading>Obrigado pelo contato, {name}!</Heading>
+
+                    <Text>
+                        Recebi sua mensagem através do meu portfólio.
+                    </Text>
+
+                    <Text>
+                        Vou analisar as informações enviadas e retornar
+                        em até <strong>24 horas</strong>.
+                    </Text>
+
+                    <Text>
+                        Caso seja algo urgente, você também pode me chamar
+                        diretamente pelo WhatsApp.
+                    </Text>
+
+                    <Text>
+                        — Eryk Olliver
+                    </Text>
+
+                </Container>
+            </Body>
+        </Html>
+    )
 }
