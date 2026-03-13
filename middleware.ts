@@ -7,24 +7,24 @@ export async function middleware(req: NextRequest) {
   const isPainel = hostname.startsWith('painel.')
 
   if (!isPainel) {
-    if (pathname.startsWith('/dashboard') || pathname.startsWith('/login')) {
+    if (pathname.startsWith('/dashboard') || pathname.startsWith('/auth')) {
       return NextResponse.redirect(new URL('/', req.url))
     }
     return NextResponse.next()
   }
 
   if (pathname === '/') {
-    return NextResponse.redirect(new URL('/login', req.url))
+    return NextResponse.redirect(new URL('/auth', req.url))
   }
 
-  if (pathname.startsWith('/login')) {
+  if (pathname.startsWith('/auth')) {
     return NextResponse.next()
   }
 
   if (pathname.startsWith('/dashboard')) {
     const token = await getToken({ req })
     if (!token) {
-      return NextResponse.redirect(new URL('/login', req.url))
+      return NextResponse.redirect(new URL('/auth', req.url))
     }
   }
 
