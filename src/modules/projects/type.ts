@@ -20,7 +20,7 @@ export type typeProjectProps = {
 }
 
 export type typeCreateProjectProps = {
-    poster: File | null,
+    poster: string | File | null,
     title: string,
     description: string,
     slug: string,
@@ -34,7 +34,6 @@ export type typeCreateProjectProps = {
     category: ProjectCategory
     skills: {
         id: number
-        name: string
     }[]
 }
 

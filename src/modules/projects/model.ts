@@ -1,13 +1,16 @@
 import prisma from "@/src/shared/libs/prisma";
-import { typeGetProjectProps, typeProjectProps } from './type'
+import { typeCreateProjectProps, typeGetProjectProps, typeProjectProps } from './type'
 import { ProjectCategory } from "@/src/generated/prisma/enums";
 
-export async function create(data: typeProjectProps) {
-    const { skills, ...rest } = data
+export async function create(data: typeCreateProjectProps) {
+    const { poster, skills, ...rest } = data
+
+    const stringPoster = poster as string
 
     return await prisma.project.create({
         data: {
             ...rest,
+            poster: stringPoster,
             skills: {
                 connect: skills.map((s) => ({ id: s.id }))
             }

@@ -49,21 +49,9 @@ export async function POST(req: Request) {
         const formData = await req.formData()
 
         const title = formData.get('title') as string;
-        const posterFile = formData.get('poster') as File;
+        const posterUrl = formData.get('poster') as string;
         const skillsRaw = formData.get('skills') as string;
-
-        const skills = JSON.parse(skillsRaw) as {
-            id: number
-            name: string
-        }[];
-
-        if (!posterFile) {
-            return NextResponse.json({ error: "Poster obrigatório" }, { status: 400 })
-        }
-
-        const uploadResult = await uploadFile(posterFile);
-        const posterUrl = uploadResult.url.publicUrl;
-
+        const skillIds = JSON.parse(skillsRaw) as number[];
 
         const slug = title
             .trim()
@@ -87,7 +75,7 @@ export async function POST(req: Request) {
             isFeatured: formData.get('isFeatured') === 'true',
             status: formData.get('status') as Status,
             category: formData.get('category') as ProjectCategory,
-            skills
+            skills: skillIds.map((id) => ({ id }))
         })
 
 

@@ -10,6 +10,7 @@ import { typeCreateProjectProps } from '@/src/modules/projects/type'
 import { typeGetSkillsProps } from '@/src/modules/skills/type'
 import { postProject } from '@/src/shared/api/projects/projects'
 import { useRouter } from "next/navigation"
+import { uploadFile } from '@/supabase-client'
 
 interface props {
     availableSkills: typeGetSkillsProps[]
@@ -46,8 +47,11 @@ export default function CreateProjectModal({ availableSkills }: props) {
                 return
             }
 
+            const uploadResult = await uploadFile(data.poster as File);
+            const posterUrl = uploadResult.url.publicUrl;
+
             const formData = new FormData()
-            formData.append('poster', data.poster)
+            formData.append('poster', posterUrl)
             formData.append('title', data.title)
             formData.append('description', data.description)
             formData.append('category', data.category)
@@ -66,6 +70,7 @@ export default function CreateProjectModal({ availableSkills }: props) {
             if (result.status === 'success') {
                 console.log("Projeto criado!")
                 reset()
+                setPreview(null);
                 router.refresh()
 
             } else {

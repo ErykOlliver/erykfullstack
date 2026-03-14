@@ -1,7 +1,7 @@
 import * as ProjectModel from '../model'
-import { typeProjectProps } from '../type'
+import { typeCreateProjectProps, typeProjectProps } from '../type'
 
-export const createProject = async (data: typeProjectProps) => {
+export const createProject = async (data: typeCreateProjectProps) => {
   return await ProjectModel.create(data)
 }
 
