@@ -64,3 +64,12 @@ model Network {
   name String @unique
   link String @unique
 }
+
+model TradeIn {
+  id String @id @default(uuid())
+  clientName String
+  valuation Float
+  generatedLink String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
