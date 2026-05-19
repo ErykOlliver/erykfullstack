@@ -1,8 +1,8 @@
 'use client'
 
 import SideBarButton from "./components/sidebar-button/sidebar-button"
-import { MdDashboard } from "react-icons/md"
-import { FaBox } from "react-icons/fa"
+import { MdDashboard, MdPayments } from "react-icons/md"
+import { TbCashRegister } from "react-icons/tb";
 import { RxExit } from "react-icons/rx";
 import { signOut } from "next-auth/react";
 
@@ -10,7 +10,7 @@ export default function Sidebar() {
 
     const menuItems = [
         { name: 'Dashboard', href: '/dashboard', icon: <MdDashboard className="size-5" /> },
-        { name: 'Projetos', href: '/dashboard/projetos', icon: <FaBox className="size-5" /> },
+        { name: 'Orçamentos e pagamentos', href: '/dashboard/budgets-and-payments', icon: <TbCashRegister className="size-5"/> },
     ]
 
     return (
