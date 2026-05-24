@@ -1,9 +1,11 @@
+import { AdminRoles } from "@/src/generated/prisma/enums";
 import prisma from "@/src/shared/libs/prisma";
 import * as argon2 from "argon2";
 
 type props = {
     id: string,
-    name: string
+    admin: string,
+    role: AdminRoles
 }
 
 export async function findAdminCredentials(admin: string, key: string): Promise<props | null> {
@@ -24,6 +26,7 @@ export async function findAdminCredentials(admin: string, key: string): Promise<
 
     return {
         id: adm.id.toString(),
-        name: adm.admin,
+        admin: adm.admin,
+        role: adm.role
     }
 }

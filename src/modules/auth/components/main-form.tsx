@@ -43,6 +43,7 @@ export default function AuthForm() {
                 })
                 setLoading(false)
             } else if (res?.ok) {
+                console.log(res)
                 router.push("/dashboard")
                 router.refresh()
                 setLoading(false)
@@ -95,6 +96,7 @@ export default function AuthForm() {
                 />
 
                 <TextField
+                    type='password'
                     id="outlined-basic"
                     fullWidth
                     onChange={(e) => setKey(e.target.value)}

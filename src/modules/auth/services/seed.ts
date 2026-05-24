@@ -18,11 +18,12 @@ async function execute() {
         },
         create: {
             admin: admin,
+            role: "owner",
             key: hashedKey,
         },
     });
 
-    console.log(" Admin configurado com sucesso:", adm.admin);
+    console.log("Administrador ancora criado com sucesso:", adm.admin);
 }
 
 execute()
