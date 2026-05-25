@@ -2,6 +2,7 @@ import { JetBrains_Mono, Poppins } from 'next/font/google'
 import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from '../shared/ui-kit/navbar/navbar';
+import AuthProvider from '../providers/session-provider';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,7 +24,10 @@ export default function RootLayout({
     <html lang="pt-BR">
 
       <body className={`h-screen w-screen relative ${poppins.variable}`}>
-        {children}
+        <AuthProvider>
+
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

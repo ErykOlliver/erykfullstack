@@ -4,9 +4,7 @@ import { Permissions } from "./permissions-enum";
 
 export const rolePermissions: Record<AdminRoles, Permissions[]> = {
     owner: [
-        Permissions.CREATE_PROJECT,
-        Permissions.DELETE_PROJECT,
-        Permissions.UPDATE_PROJECT,
+        Permissions.MANAGE_PROJECTS,
         Permissions.MANAGE_ADMINS,
         Permissions.MANAGE_BUDGETS
     ],

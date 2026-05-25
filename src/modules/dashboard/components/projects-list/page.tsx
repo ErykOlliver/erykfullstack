@@ -22,7 +22,7 @@ export default function ProjectList({ data }: props) {
 
             <div className='flex flex-col bg-gray-50/30 p-4 h-95 overflow-y-auto gap-4 w-full'>
                 {data.length > 0 ? (
-                    data.map((p, i) => <ProjectCard key={p.id || i} data={p} />)
+                    data.map((p, i) => <ProjectCard key={p.id || i} pProps={p} />)
                 ) : (
                     <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-2">
                         <p className='font-medium'>Nenhum projeto por aqui...</p>
