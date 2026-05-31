@@ -1,3 +1,4 @@
+import { AdminRoles } from "@/src/generated/prisma/enums";
 import prisma from "@/src/shared/libs/prisma";
 import * as argon2 from 'argon2'
 
@@ -18,7 +19,7 @@ async function execute() {
         },
         create: {
             admin: admin,
-            role: "owner",
+            role: AdminRoles.attendant,
             key: hashedKey,
         },
     });

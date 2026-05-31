@@ -25,7 +25,7 @@ export async function findAdminCredentials(admin: string, key: string): Promise<
     }
 
     return {
-        id: adm.id.toString(),
+        id: adm.id,
         admin: adm.admin,
         role: adm.role
     }

@@ -39,7 +39,7 @@ enum AdminRoles {
 }
 
 model Admin {
-  id        Int        @id @unique @default(autoincrement())
+  id        String @id @unique @default(uuid())
   admin     String     @unique
   key       String
   role      AdminRoles @default(attendant)
