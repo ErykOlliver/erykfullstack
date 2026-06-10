@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { MercadoPagoConfig, Preference } from 'mercadopago';
 import prisma from '@/src/shared/libs/prisma';
+import { typePaymentProps } from '@/src/shared/api/payments/type';
 
 const client = new MercadoPagoConfig({
     accessToken: process.env.MP_ACCESS_TOKEN!
@@ -8,8 +9,8 @@ const client = new MercadoPagoConfig({
 
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
-        const { clientName, valuation } = body;
+        const body: typePaymentProps = await request.json();
+        const { valuation, projectName, id } = body;
 
         if (!valuation || isNaN(valuation)) {
             return NextResponse.json({ error: 'Valor inválido' }, { status: 400 });
@@ -21,15 +22,15 @@ export async function POST(request: Request) {
             body: {
                 items: [
                     {
-                        id: 'projeto-web',
-                        title: ` 'Desenvolvimento' - || 'Sistema Web'`,
+                        id: id,
+                        title: projectName,
                         quantity: 1,
                         unit_price: Number(valuation),
                         currency_id: 'BRL',
                     }
                 ],
                 metadata: {
-                    client_name: clientName,
+                    id
                 },
                 payment_methods: {
                     excluded_payment_types: [
@@ -39,17 +40,8 @@ export async function POST(request: Request) {
             }
         });
 
-        const newTrade = await prisma.tradeIn.create({
-            data: {
-                clientName: clientName,
-                valuation: Number(valuation),
-                generatedLink: mpResponse.init_point!, 
-            }
-        });
-
         return NextResponse.json({
             paymentLink: mpResponse.init_point,
-            vendaId: newTrade.id
         });
 
     } catch (error) {

@@ -19,7 +19,7 @@ async function execute() {
         },
         create: {
             admin: admin,
-            role: AdminRoles.attendant,
+            role: AdminRoles.owner,
             key: hashedKey,
         },
     });

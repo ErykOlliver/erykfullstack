@@ -39,7 +39,7 @@ enum AdminRoles {
 }
 
 model Admin {
-  id        String @id @unique @default(uuid())
+  id        String     @id @unique @default(uuid())
   admin     String     @unique
   key       String
   role      AdminRoles @default(attendant)
@@ -72,10 +72,20 @@ model Network {
 }
 
 model TradeIn {
-  id            String   @id @default(uuid())
-  clientName    String
-  valuation     Float
-  generatedLink String
-  createAt      DateTime @default(now())
-  updateAt      DateTime @updatedAt
+  id                String    @id @default(uuid())
+  quoteNumber       String    @unique
+  clientName        String
+  clientContact     String?
+  niche             String?
+  projectName       String?
+  description       String?
+  features          String[]
+  valuation         Float
+  entryAmount       Float?
+  paymentConditions String?
+  generatedLink     String
+  deliveryDeadline  String?
+  validUntil        DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 }
