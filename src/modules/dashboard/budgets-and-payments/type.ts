@@ -1,5 +1,4 @@
 export type typeCreateBudgetProps = {
-    quoteNumber: string;
     clientName: string;
     clientContact?: string;
     niche?: string;
@@ -9,7 +8,11 @@ export type typeCreateBudgetProps = {
     valuation: number;
     entryAmount?: number;
     paymentConditions?: string;
-    generatedLink: string;
     deliveryDeadline?: string;
     validUntil?: Date;
+}
+
+export type typeCreateBudgetInput = typeCreateBudgetProps & {
+    quoteNumber: string;
+    generatedLink: string;
 }

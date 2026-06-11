@@ -45,7 +45,7 @@ export default function CreateBudgetModal() {
             formData.append('niche', data.niche || "Não informado")
             formData.append('description', data.description || 'Sem Descrição')
             formData.append('features', String(data.features || []))
-            formData.append('valutation', String(data.valuation))
+            formData.append('valuation', String(data.valuation))
             formData.append('entryAmount', String(data.entryAmount))
             formData.append('applicationType', data.paymentConditions || 'Nenhuma condição informada')
             formData.append("deliveryDeadline", data.deliveryDeadline || "Nenhuma data foi estimada")
@@ -55,13 +55,14 @@ export default function CreateBudgetModal() {
             const result = await postBudget(formData)
 
             if (result.status === 'success') {
-                console.log("Projeto criado!")
+                console.log("Orçamento criado!")
                 reset()
                 setPreview(null);
                 router.refresh()
 
             } else {
                 alert("Erro: " + result)
+                console.log("Orçamento não foi criado")
             }
 
 
@@ -92,37 +93,20 @@ export default function CreateBudgetModal() {
                 <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl p-8 shadow-2xl z-101 custom-scrollbar">
 
                     <div className="flex justify-between items-center mb-6">
-                        <Dialog.Title className="text-2xl font-bold text-gray-800">Novo Projeto</Dialog.Title>
+                        <Dialog.Title className="text-2xl font-bold text-gray-800">Gerar orçamento</Dialog.Title>
                         <Dialog.Close className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                             <PiXBold size={24} />
                         </Dialog.Close>
                     </div>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm font-bold text-gray-700">Poster do Projeto</label>
-                            <label className="relative cursor-pointer hover:opacity-90 transition-opacity">
-                                <div className="w-full h-48 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center overflow-hidden">
-                                    {preview ? (
-                                        <img src={preview} className="w-full h-full object-cover" />
-                                    ) : (
-                                        <div className="text-gray-400 flex flex-col items-center">
-                                            <PiUploadSimpleBold size={40} />
-                                            <span className="text-xs mt-2 font-medium">Clique para subir a imagem</span>
-                                        </div>
-                                    )}
-                                </div>
-                                <input type="file" className="hidden" onChange={handleFileChange} accept="image/*" />
-                            </label>
-                        </div>
-
                         <div className="flex flex-col gap-1">
-                            <label className="text-xs font-bold text-gray-500 uppercase">Título</label>
-                            <input {...register('title')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: E-commerce App" />
+                            <label className="text-xs font-bold text-gray-500 uppercase">Nome do projeto</label>
+                            <input {...register('projectName')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: E-commerce App" />
                         </div>
                         <div className="flex flex-col gap-1">
-                            <label className="text-xs font-bold text-gray-500 uppercase">Tipo de aplicação</label>
-                            <input {...register('applicationType')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: Api" />
+                            <label className="text-xs font-bold text-gray-500 uppercase">Nome do cliente</label>
+                            <input {...register('clientName')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: John Doe" />
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -130,46 +114,30 @@ export default function CreateBudgetModal() {
                             <textarea {...register('description')} rows={3} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none resize-none" placeholder="Conte mais sobre o projeto..." />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-2 gap-4">
                             <div className="flex flex-col gap-1">
-                                <label className="text-xs font-bold text-gray-500 uppercase">Categoria</label>
-                                <select {...register('category')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg outline-none">
-                                    {Object.values(ProjectCategory).map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                                </select>
+                                <label className="text-xs font-bold text-gray-500 uppercase">Nicho</label>
+                                <input {...register('niche')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: Barbeiro, Designer" />
                             </div>
                             <div className="flex flex-col gap-1">
-                                <label className="text-xs font-bold text-gray-500 uppercase">Status</label>
-                                <select {...register('status')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg outline-none">
-                                    {Object.values(Status).map(st => <option key={st} value={st}>{st}</option>)}
-                                </select>
-                            </div>
-                            <div className="flex flex-col gap-1">
-                                <label className="text-xs font-bold text-gray-500 uppercase">Destaque?</label>
-                                <div className="flex items-center h-full">
-                                    <input type="checkbox" {...register('isFeatured')} className="w-5 h-5 accent-orange-500" />
-                                    <span className="ml-2 text-sm text-gray-600">Sim, destacar</span>
-                                </div>
+                                <label className="text-xs font-bold text-gray-500 uppercase">Recursos(Separar com ",")</label>
+                                <input {...register('features')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: Serviço de autenticação, Painel de controle" />
                             </div>
                         </div>
-
-                        <div className="flex flex-col gap-3">
-                            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                Tecnologias Utilizadas
-                            </label>
-                            <div className="flex flex-wrap gap-2 p-4 bg-gray-50 rounded-xl border border-gray-100">
-
-                            </div>
+                        <div className="flex flex-col gap-1">
+                            <label className="text-xs font-bold text-gray-500 uppercase">Condições de Pagamento</label>
+                            <textarea {...register('paymentConditions')} rows={3} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none resize-none" placeholder="Conte mais sobre a negociação..." />
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input {...register('github')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="URL Github" />
-                            <input {...register('page')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="URL Demo (Page)" />
-                            <input {...register('designer')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Nome do Designer" />
-                            <input {...register('designerPage')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Link do Portfólio do Designer" />
+                            <input {...register('valuation')} type='number' className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Valor Estimado" />
+                            <input {...register('entryAmount')} type='number' className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Valor de Entrada" />
+                            <input {...register('deliveryDeadline')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Prazo de Entrega" />
+                            <input {...register('validUntil')} type='date' className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Tempo de Validez" />
                         </div>
 
                         <button type="submit" disabled={isPending} className="w-full py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors shadow-lg shadow-orange-200">
-                            Salvar Projeto
+                            Gerar oçamento
                         </button>
                     </form>
                 </Dialog.Content>
