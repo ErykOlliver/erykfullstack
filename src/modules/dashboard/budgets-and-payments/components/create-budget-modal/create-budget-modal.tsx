@@ -12,8 +12,8 @@ import { uploadFile } from '@/supabase-client'
 import { useSession } from "next-auth/react"
 import { hasPermission } from '@/src/shared/libs/has-permission'
 import { Permissions } from '@/src/shared/libs/permissions-enum'
-import { typeCreateBudgetProps } from '../../type'
 import { postBudget } from '@/src/shared/api/budgets/budgets'
+import { typeCreateBudgetProps } from '../../type'
 
 export default function CreateBudgetModal() {
     const [preview, setPreview] = useState<string | null>(null)
@@ -57,7 +57,6 @@ export default function CreateBudgetModal() {
             if (result.status === 'success') {
                 console.log("Orçamento criado!")
                 reset()
-                setPreview(null);
                 router.refresh()
 
             } else {

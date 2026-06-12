@@ -31,3 +31,9 @@ export async function postBudget(data: FormData) {
 
     return await response.json()
 }
+
+export async function getBudgets() {
+    const response = await fetch(`/api/budget`, { cache: 'no-store' })
+    if (!response.ok) throw new Error('Erro ao buscar orçamentos')
+    return await response.json()
+}
