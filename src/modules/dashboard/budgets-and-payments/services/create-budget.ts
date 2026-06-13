@@ -9,7 +9,7 @@ export async function createBudget(data: typeCreateBudgetProps) {
     const paymentLink = await generatePayment({
         id: quoteNumber,
         projectName: data.projectName || "Não informado",
-        valuation: data.valuation
+        valuation: data.entryAmount || 0
     })
 
     const result = await BudgetModel.create({

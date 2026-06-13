@@ -1,6 +1,6 @@
 'use client'
 
-import { PiFilePdfBold, PiLinkBold, PiCalendarBold, PiUserBold } from 'react-icons/pi'
+import { PiFilePdfBold, PiLinkBold, PiCalendarBold, PiUserBold, PiTrash, PiTrashBold } from 'react-icons/pi'
 import { typeGetBudgetProps } from '../../type'
 
 const brl = (v: number) =>
@@ -13,6 +13,23 @@ export default function BudgetList({ data }: { data: typeGetBudgetProps[] }) {
                 <p className="text-sm animate-pulse">Nenhum orçamento gerado ainda.</p>
             </div>
         )
+    }
+
+    const handleDownloadPdf = async (budget: typeGetBudgetProps) => {
+        const response = await fetch('/api/budget/download', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(budget)
+        })
+
+
+        const blob = await response.blob()
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `Orcamento_${budget.clientName}.pdf`
+        a.click()
+        URL.revokeObjectURL(url)
     }
 
     return (
@@ -69,12 +86,16 @@ export default function BudgetList({ data }: { data: typeGetBudgetProps[] }) {
                         )}
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="grid grid-cols-2 items-start justify-start gap-2 shrink-0">
 
-                        <button className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-600 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
-                            <PiFilePdfBold size={14} />
-                            PDF
+                        <button
+                            onClick={() => handleDownloadPdf(budget)}
+                            className="flex items-center gap-1.5 p-3 text-xs font-semibold text-gray-600 hover:text-white border border-gray-200 rounded-xl hover:bg-red-500 hover:cursor-pointer transition-colors"
+                        >
+                            <PiFilePdfBold size={16} />
                         </button>
+
+
                     </div>
                 </div>
             ))}

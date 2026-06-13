@@ -17,8 +17,10 @@ import { typeCreateBudgetProps } from '../../type'
 
 export default function CreateBudgetModal() {
     const [preview, setPreview] = useState<string | null>(null)
+    const [entryAmount, setEntryAmount] = useState<number>(0)
     const { register, handleSubmit, setValue, watch, reset } = useForm<typeCreateBudgetProps>()
     const [isPending, startTransition] = useTransition()
+    const valuation = watch("valuation")
     const router = useRouter()
 
     const { data } = useSession()
@@ -29,6 +31,10 @@ export default function CreateBudgetModal() {
             Permissions.MANAGE_PROJECTS
         )
         : false
+
+    const entryAmountPlaceholder = valuation
+        ? (Number(valuation) * 0.5).toFixed(2)
+        : "Valor da entrada";
 
     const onSubmit = async (data: typeCreateBudgetProps) => {
         if (!canCreateBudget) {
@@ -46,7 +52,7 @@ export default function CreateBudgetModal() {
             formData.append('description', data.description || 'Sem Descrição')
             formData.append('features', String(data.features || []))
             formData.append('valuation', String(data.valuation))
-            formData.append('entryAmount', String(data.entryAmount))
+            formData.append('entryAmount', String(entryAmountPlaceholder))
             formData.append('applicationType', data.paymentConditions || 'Nenhuma condição informada')
             formData.append("deliveryDeadline", data.deliveryDeadline || "Nenhuma data foi estimada")
             formData.append("validUntil", String(data.validUntil))
@@ -107,6 +113,10 @@ export default function CreateBudgetModal() {
                             <label className="text-xs font-bold text-gray-500 uppercase">Nome do cliente</label>
                             <input {...register('clientName')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="Ex: John Doe" />
                         </div>
+                        <div className="flex flex-col gap-1">
+                            <label className="text-xs font-bold text-gray-500 uppercase">Contato do cliente</label>
+                            <input {...register('clientContact')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 outline-none" placeholder="(Link do whatsapp ou instagram)" />
+                        </div>
 
                         <div className="flex flex-col gap-1">
                             <label className="text-xs font-bold text-gray-500 uppercase">Descrição</label>
@@ -129,8 +139,8 @@ export default function CreateBudgetModal() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <input {...register('valuation')} type='number' className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Valor Estimado" />
-                            <input {...register('entryAmount')} type='number' className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Valor de Entrada" />
+                            <input  {...register('valuation')} type='number' className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Valor Estimado" />
+                            <input disabled {...register('entryAmount')} type='number' className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder={entryAmountPlaceholder} />
                             <input {...register('deliveryDeadline')} className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Prazo de Entrega" />
                             <input {...register('validUntil')} type='date' className="p-3 bg-gray-50 border border-gray-200 rounded-lg" placeholder="Tempo de Validez" />
                         </div>
