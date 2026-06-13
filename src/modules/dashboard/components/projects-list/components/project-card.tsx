@@ -2,20 +2,37 @@
 
 import { deleteProject } from '@/src/modules/projects/services/delete-project'
 import { typeGetProjectProps } from '@/src/modules/projects/type'
+import { hasPermission } from '@/src/shared/libs/has-permission'
+import { Permissions } from '@/src/shared/libs/permissions-enum'
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import React, { useTransition } from 'react'
 import { PiCrownSimpleFill, PiPencilSimple, PiTrash, PiEye } from 'react-icons/pi'
 
 type props = {
-    data: typeGetProjectProps
+    pProps: typeGetProjectProps
 }
 
-export default function ProjectCard({ data }: props) {
+export default function ProjectCard({ pProps }: props) {
     const [isPending, startTransition] = useTransition()
+    const { data } = useSession()
+
+    const canCreateProject = data?.user?.role
+        ? hasPermission(
+            data.user.role,
+            Permissions.MANAGE_PROJECTS
+        )
+        : false
 
     const handleDelete = () => {
+
+        if (!canCreateProject) {
+            alert("Sem permissão")
+            return
+        }
+
         startTransition(async () => {
-            await deleteProject(data.id)
+            await deleteProject(pProps.id)
         })
     }
 
@@ -23,10 +40,10 @@ export default function ProjectCard({ data }: props) {
         <article className="group w-full min-h-27.5 rounded-xl flex flex-col bg-white border border-gray-200 overflow-hidden hover:shadow-lg hover:border-orange-300 transition-all duration-300 relative shrink-0">
             <div className="w-full flex h-5 text-[9px] font-bold tracking-widest text-white uppercase">
                 <div className="flex-1 flex items-center justify-center bg-zinc-800 px-2">
-                    {data.applicationType}
+                    {pProps.applicationType}
                 </div>
                 <div className={`flex-1 flex items-center bg-primary-500 justify-center px-2`}>
-                    {data.status}
+                    {pProps.status}
                 </div>
             </div>
 
@@ -34,12 +51,12 @@ export default function ProjectCard({ data }: props) {
                 <div className="flex items-center gap-4 min-w-0">
                     <div className="relative w-16 h-12 shrink-0 rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
                         <Image
-                            src={data.poster}
-                            alt={data.title}
+                            src={pProps.poster}
+                            alt={pProps.title}
                             fill
                             className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
-                        {data.isFeatured && (
+                        {pProps.isFeatured && (
                             <div className="absolute top-0 left-0 p-0.5 bg-black/60 rounded-br-lg">
                                 <PiCrownSimpleFill className="text-yellow-400" size={12} />
                             </div>
@@ -48,9 +65,9 @@ export default function ProjectCard({ data }: props) {
 
                     <div className="flex flex-col min-w-0">
                         <h3 className="font-bold text-gray-800 truncate text-sm md:text-base group-hover:text-orange-600 transition-colors">
-                            {data.title}
+                            {pProps.title}
                         </h3>
-                        <p className="text-[10px] text-gray-400 font-medium">ID: {data.id.substring(0, 8)}...</p>
+                        <p className="text-[10px] text-gray-400 font-medium">ID: {pProps.id.substring(0, 8)}...</p>
                     </div>
                 </div>
 
@@ -61,7 +78,7 @@ export default function ProjectCard({ data }: props) {
                     <button className="p-2 hover:bg-orange-50 text-orange-600 rounded-full transition-colors" title="Editar">
                         <PiPencilSimple size={18} />
                     </button>
-                    <button disabled={isPending} onClick={handleDelete} className="p-2 hover:bg-red-50 text-red-600 rounded-full transition-colors" title="Excluir">
+                    <button disabled={isPending} onClick={handleDelete} className={`${!canCreateProject ? 'cursor-not-allowed' : 'cursor-pointer'} p-2 hover:bg-red-50 text-red-600 rounded-full transition-colors`} title="Excluir">
                         <PiTrash size={18} />
                     </button>
                 </div>

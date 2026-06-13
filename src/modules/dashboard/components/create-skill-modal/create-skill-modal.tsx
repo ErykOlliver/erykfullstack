@@ -7,6 +7,9 @@ import { PiXBold, PiPlusBold, PiLightningBold, PiUsersBold } from 'react-icons/p
 import { createSkill } from '@/src/modules/skills/services/create-skill'
 import { useTransition } from 'react'
 import { typeSkillsProps } from '@/src/modules/skills/type'
+import { useSession } from 'next-auth/react'
+import { hasPermission } from '@/src/shared/libs/has-permission'
+import { Permissions } from '@/src/shared/libs/permissions-enum'
 
 
 export default function CreateSkillModal() {
@@ -16,10 +19,23 @@ export default function CreateSkillModal() {
             category: SkillCategory.HARD
         }
     })
+    const { data } = useSession()
+
+    const canCreateProject = data?.user?.role
+        ? hasPermission(
+            data.user.role,
+            Permissions.MANAGE_PROJECTS
+        )
+        : false
 
     const selectedCategory = watch('category')
 
     const onSubmit = async (data: typeSkillsProps) => {
+        if (!canCreateProject) {
+            alert("Sem permissão")
+            return
+        }
+
         startTransition(async () => {
             try {
                 await createSkill(data)
@@ -32,7 +48,15 @@ export default function CreateSkillModal() {
     return (
         <Dialog.Root>
             <Dialog.Trigger asChild>
-                <button className="flex items-center gap-2 px-4 py-2.5 bg-zinc-800 hover:bg-zinc-900 text-white rounded-xl font-semibold text-sm transition-all shadow-sm active:scale-95">
+                <button
+                    disabled={!canCreateProject}
+                    className={`
+                        flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-sm
+                        ${canCreateProject
+                            ? 'bg-zinc-800 hover:bg-zinc-900 text-white active:scale-95'
+                            : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
+                    `}
+                >
                     <PiPlusBold size={20} /> Adicionar Habilidade
                 </button>
             </Dialog.Trigger>

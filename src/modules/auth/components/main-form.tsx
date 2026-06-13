@@ -1,6 +1,6 @@
 import { CircularProgress, TextField } from '@mui/material'
 import { Key, ShieldUser } from 'lucide-react'
-import { signIn } from 'next-auth/react'
+import { getSession, signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { FormEvent, useEffect, useState } from 'react'
 import { typeAlertProps } from '../type'
@@ -43,7 +43,7 @@ export default function AuthForm() {
                 })
                 setLoading(false)
             } else if (res?.ok) {
-                router.push("/dashboard")
+                router.push('dashboard')
                 router.refresh()
                 setLoading(false)
 
@@ -95,6 +95,7 @@ export default function AuthForm() {
                 />
 
                 <TextField
+                    type='password'
                     id="outlined-basic"
                     fullWidth
                     onChange={(e) => setKey(e.target.value)}

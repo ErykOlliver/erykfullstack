@@ -2,19 +2,38 @@
 
 import { deleteSkill } from '@/src/modules/skills/services/delete-skill'
 import { typeGetSkillsProps } from '@/src/modules/skills/type'
+import { hasPermission } from '@/src/shared/libs/has-permission'
+import { Permissions } from '@/src/shared/libs/permissions-enum'
+import { useSession } from 'next-auth/react'
 import { useTransition } from 'react'
 import { PiPencilSimple, PiTrash, PiCode } from 'react-icons/pi'
 
 type props = {
-    data: typeGetSkillsProps
+    sProps: typeGetSkillsProps
 }
 
-export default function SkillCard({ data }: props) {
+export default function SkillCard({ sProps }: props) {
     const [isPending, startTransition] = useTransition()
 
+    const { data } = useSession()
+
+    const canCreateProject = data?.user?.role
+        ? hasPermission(
+            data.user.role,
+            Permissions.MANAGE_PROJECTS
+        )
+        : false
+
     const handleDelete = () => {
+
+        if (!canCreateProject) {
+            alert("Sem permissão")
+            return
+        }
+
+
         startTransition(async () => {
-            await deleteSkill(data.id)
+            await deleteSkill(sProps.id)
         })
     }
     return (
@@ -27,7 +46,7 @@ export default function SkillCard({ data }: props) {
 
                 <div className="flex flex-col min-w-0">
                     <h3 className="font-bold text-gray-800 truncate text-sm group-hover:text-orange-600 transition-colors">
-                        {data.name}
+                        {sProps.name}
                     </h3>
                 </div>
             </div>
@@ -43,7 +62,7 @@ export default function SkillCard({ data }: props) {
                     onClick={handleDelete}
                     disabled={isPending}
                     title="Excluir"
-                    className="p-2 hover:bg-red-50 text-red-600 rounded-full transition-colors"
+                    className={`${!canCreateProject ? 'cursor-not-allowed' : 'cursor-pointer'} p-2 hover:bg-red-50 text-red-600 rounded-full transition-colors`}
                 >
                     <PiTrash size={18} />
                 </button>

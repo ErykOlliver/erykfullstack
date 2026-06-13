@@ -33,11 +33,17 @@ model Skill {
   projects Project[]     @relation("ProjectSkills")
 }
 
+enum AdminRoles {
+  owner
+  attendant
+}
+
 model Admin {
-  id        Int      @id @unique @default(autoincrement())
-  admin     String   @unique
+  id        String     @id @unique @default(uuid())
+  admin     String     @unique
   key       String
-  createdAt DateTime @default(now())
+  role      AdminRoles @default(attendant)
+  createdAt DateTime   @default(now())
 }
 
 model Project {
@@ -66,10 +72,20 @@ model Network {
 }
 
 model TradeIn {
-  id String @id @default(uuid())
-  clientName String
-  valuation Float
-  generatedLink String
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  id                String    @id @default(uuid())
+  quoteNumber       String    @unique
+  clientName        String
+  clientContact     String?
+  niche             String?
+  projectName       String?
+  description       String?
+  features          String[]
+  valuation         Float
+  entryAmount       Float?
+  paymentConditions String?
+  generatedLink     String
+  deliveryDeadline  String?
+  validUntil        DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 }

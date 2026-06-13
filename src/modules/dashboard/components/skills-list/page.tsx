@@ -23,7 +23,7 @@ export default function SkillList({ data }: props) {
             <div className='flex flex-col bg-gray-50/30 p-4 h-95 overflow-y-auto gap-3 w-full custom-scrollbar'>
                 {data.length > 0 ? (
                     data.map((skill, i) => (
-                        <SkillCard key={skill.id || i} data={skill} />
+                        <SkillCard key={skill.id || i} sProps={skill} />
                     ))
                 ) : (
                     <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-2">

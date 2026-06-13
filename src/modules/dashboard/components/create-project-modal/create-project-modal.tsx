@@ -11,6 +11,9 @@ import { typeGetSkillsProps } from '@/src/modules/skills/type'
 import { postProject } from '@/src/shared/api/projects/projects'
 import { useRouter } from "next/navigation"
 import { uploadFile } from '@/supabase-client'
+import { useSession } from "next-auth/react"
+import { hasPermission } from '@/src/shared/libs/has-permission'
+import { Permissions } from '@/src/shared/libs/permissions-enum'
 
 interface props {
     availableSkills: typeGetSkillsProps[]
@@ -22,6 +25,15 @@ export default function CreateProjectModal({ availableSkills }: props) {
     const { register, handleSubmit, setValue, watch, reset } = useForm<typeCreateProjectProps>()
     const [isPending, startTransition] = useTransition()
     const router = useRouter()
+
+    const { data } = useSession()
+
+    const canCreateProject = data?.user?.role
+        ? hasPermission(
+            data.user.role,
+            Permissions.MANAGE_PROJECTS
+        )
+        : false
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] ?? null
@@ -40,6 +52,10 @@ export default function CreateProjectModal({ availableSkills }: props) {
     }
 
     const onSubmit = async (data: typeCreateProjectProps) => {
+        if (!canCreateProject) {
+            alert("Sem permissão")
+            return
+        }
 
         try {
             if (!data.poster) {
@@ -86,8 +102,17 @@ export default function CreateProjectModal({ availableSkills }: props) {
     return (
         <Dialog.Root>
             <Dialog.Trigger asChild>
-                <button className="flex items-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-semibold text-sm transition-all shadow-sm active:scale-95">
-                    <PiPlusBold size={20} /> Novo Projeto
+                <button
+                    disabled={!canCreateProject}
+                    className={`
+            flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-sm
+            ${canCreateProject
+                            ? 'bg-orange-500 hover:bg-orange-600 text-white active:scale-95'
+                            : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
+        `}
+                >
+                    <PiPlusBold size={20} />
+                    Novo Projeto
                 </button>
             </Dialog.Trigger>
 

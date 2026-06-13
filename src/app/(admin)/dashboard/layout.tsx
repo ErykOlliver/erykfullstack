@@ -23,9 +23,9 @@ export default async function DashboardLayout({ children }: { children: React.Re
                 </div>
                 <div className="flex items-center gap-4 text-sm font-medium">
                     <div className='flex flex-col items-end'>
-                        <span className='font-poppins text-sm font-medium'>Administração</span>
+                        <span className='font-poppins text-sm font-medium'>{session.user.admin}</span>
                         <span className='text-gray-400 text-xs font-poppins'>
-                            {session.user?.name}
+                            {session.user?.role}
                         </span>
                     </div>
                     <div className="size-10 rounded-full flex relative bg-gray-200">

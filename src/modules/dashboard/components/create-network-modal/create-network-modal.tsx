@@ -6,11 +6,28 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { PiXBold, PiPlusBold, PiShareNetworkBold, PiLinkBold } from 'react-icons/pi'
 import { typeNetworkProps } from '@/src/modules/network/type'
 import { createNetwork } from '@/src/modules/network/services/create-network'
+import { useSession } from 'next-auth/react'
+import { hasPermission } from '@/src/shared/libs/has-permission'
+import { Permissions } from '@/src/shared/libs/permissions-enum'
 
 export default function CreateNetworkModal() {
     const { register, handleSubmit, reset } = useForm<typeNetworkProps>()
+    const { data } = useSession()
+
+    const canCreateProject = data?.user?.role
+        ? hasPermission(
+            data.user.role,
+            Permissions.MANAGE_PROJECTS
+        )
+        : false
+
 
     const onSubmit = async (data: typeNetworkProps) => {
+        if (!canCreateProject) {
+            alert("Sem permissão")
+            return
+        }
+
         try {
             console.log("Cadastrando Rede Social:", data)
             createNetwork({ name: data.name, link: data.link })
@@ -23,11 +40,18 @@ export default function CreateNetworkModal() {
     return (
         <Dialog.Root>
             <Dialog.Trigger asChild>
-                <button className="flex items-center gap-2 px-4 py-2.5 border-2 border-zinc-200 hover:border-zinc-300 text-zinc-600 rounded-xl font-semibold text-sm transition-all active:scale-95">
+                <button
+                    disabled={!canCreateProject}
+                    className={`
+                                    flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-sm
+                                    ${canCreateProject
+                            ? 'bg-zinc-800 hover:bg-zinc-900 text-white active:scale-95'
+                            : 'bg-gray-200 text-gray-400 cursor-not-allowed'}
+                                `}
+                >
                     <PiShareNetworkBold size={20} /> Redes
                 </button>
             </Dialog.Trigger>
-
             <Dialog.Portal>
                 <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-100" />
                 <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-2xl p-8 shadow-2xl z-101">
