@@ -28,7 +28,7 @@ export default function CreateBudgetModal() {
     const canCreateBudget = data?.user?.role
         ? hasPermission(
             data.user.role,
-            Permissions.MANAGE_PROJECTS
+            Permissions.MANAGE_BUDGETS
         )
         : false
 
